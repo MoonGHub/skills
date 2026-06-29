@@ -1,0 +1,4 @@
+interface:
+  display_name: "Project AI Context Builder"
+  short_description: "Build adaptive AI_CONTEXT/AGENTS guides"
+  default_prompt: "Use $project-ai-context-builder to analyze this repository, infer the project type and language, then create or refresh AI_CONTEXT and AGENTS.md for AI-driven development."
