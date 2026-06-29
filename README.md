@@ -6,6 +6,11 @@ Personal agent skills repository.
 
 - `project-ai-context-builder`: Analyze a repository and create or refresh `AI_CONTEXT` and `AGENTS.md` documentation for AI-driven development continuity.
 
+## Quality Notes
+
+- Review record: `docs/project-ai-context-builder-audit.md`
+- Runtime quality checklist: `skills/project-ai-context-builder/references/quality-check.md`
+
 ## Install With `npx skills`
 
 ```bash

@@ -49,7 +49,8 @@ Before writing docs in a repository:
    - React/Vite/Next.js web: `references/frontend-react-analysis.md`
    - React Native/mobile: `references/react-native-analysis.md`
    - Multi-project repository outputs: `references/multi-project-patterns.md`
-8. For reusable request wording, read `references/prompt-patterns.md` when the user asks how to invoke this skill or wants prompts.
+8. Before final validation/reporting, read `references/quality-check.md` and include its result checklist in the final answer.
+9. For reusable request wording, read `references/prompt-patterns.md` when the user asks how to invoke this skill or wants prompts.
 
 ## Workflow
 
@@ -67,7 +68,7 @@ Before writing docs in a repository:
 8. Create or refresh folder-level `AGENTS.md` for every meaningful work folder, including deep subfolders only when they have distinct responsibilities.
 9. Add module detail docs under `AI_CONTEXT/08_MODULE_DETAIL/` or the project-specific module-detail section for large modules or business-heavy packages.
 10. Update `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`.
-11. Validate docs for coverage, secret safety, documentation-only changes, and useful depth.
+11. Validate docs for coverage, secret safety, documentation-only changes, useful depth, and the quality checklist in `references/quality-check.md`.
 12. Re-read the generated/updated root `AGENTS.md`, `00_START_HERE.md`, AI dev rule, and representative folder `AGENTS.md`; apply final improvements if gaps remain.
 13. Report generated files, confirmed stack/domain/feature/architecture rules, `확인 필요`, validation result, and recommended next analysis area.
 
@@ -121,6 +122,7 @@ Before final reporting:
 - Confirm generated/vendor/build output was not documented as source responsibility unless explicitly relevant.
 - Confirm root `AGENTS.md` follows the role, required reading, rules, do-not, related context, check-together shape.
 - Confirm frontend docs include design/UI/responsive guidance when applicable.
+- Evaluate the output with `references/quality-check.md` and report each applicable item as `상`, `중`, `하`, or `확인 필요`.
 - Run a secret-oriented text scan over generated markdown using generic terms such as `password`, `secret`, `token`, `api_key`, `credential`, `client_secret`, `refresh_token`, `firebase`, `keystore`, `signing`, and project-specific sensitive-looking literals discovered during analysis. Do not print secret values in the final answer.
 - Check `git status --short` or equivalent and ensure only documentation files were changed unless the user requested more.
 - Do not run tests unless code changed or the user asks; mention that tests were not run because documentation only changed.
@@ -137,5 +139,6 @@ Report concisely in the detected output language:
 6. 확인된 아키텍처/API/DB/UI/native/design 규칙
 7. AI 개발 시 핵심 규칙
 8. 확인 필요 사항
-9. 검증 결과
-10. 다음 단계 추천
+9. 품질 체크 결과
+10. 검증 결과
+11. 다음 단계 추천
