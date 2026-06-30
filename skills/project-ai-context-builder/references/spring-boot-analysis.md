@@ -53,6 +53,7 @@ For each major package:
 - Scheduler jobs and profile conditions
 - DTO conversion location
 - Template/static dependencies if server-rendered pages exist
+- Contract maps for confirmed Controller/DTO/schema/template/static/client dependencies
 
 ## 5. Architecture Rules
 
@@ -63,6 +64,7 @@ Confirm and document:
 - Repository/persistence owns data access only.
 - Entity changes require migration review.
 - API response/error format must not be changed casually.
+- Update relevant contract maps before changing API response fields, DTOs, template field usage, generated clients, schema/entity fields, or external payload mappings.
 - Security matcher and role/authority mapping must be checked before API changes.
 
 ## 6. Tests and Operations

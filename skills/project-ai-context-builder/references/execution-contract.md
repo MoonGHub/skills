@@ -59,9 +59,11 @@ Before writing docs, internally verify:
 
 - Does the strategy help a new AI session resume work without conversation context?
 - Does it cover project structure, stack, architecture, domain/feature flow, API, data/state, security/auth, build/run/test, and high-risk areas?
+- Does it identify direct cross-boundary contracts that need a contract map?
 - Does it choose frontend design docs when the project has UI?
 - Does it avoid source-code edits and generated/vendor output?
 - Does it keep docs concise enough to be reusable?
+- Does it follow the document size policy and split oversized docs?
 - Does it separate confirmed facts, assumptions, and `확인 필요`?
 
 If the answer is weak, adjust the strategy before writing.
@@ -96,6 +98,8 @@ After writing docs, re-check:
 - `00_START_HERE` gives a clear next-session reading order
 - AI dev rules enforce changelog and nearest AGENTS reading
 - folder AGENTS coverage is neither too sparse nor too noisy
+- contract maps exist only where confirmed dependencies make them useful
+- docs follow the size policy and avoid oversized catch-all files
 - frontend projects include design/responsive/component guidance
 - secret scan does not reveal literal sensitive values
 - final report includes remaining `확인 필요` and next steps

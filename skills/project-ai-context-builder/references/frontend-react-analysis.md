@@ -40,11 +40,13 @@ Document:
 - error alert/toast handling
 - query/mutation hook pattern
 - regeneration command and generated files that should not be hand-edited
+- contract maps for pages/components/hooks that directly consume API fields, route params, generated models, or config/env keys
 
 Rules:
 
 - Treat generated API/model files as generated output.
 - Update docs when backend contract changes.
+- Update relevant contract maps when request/response fields, route params, generated models, env keys, or UI field usage changes.
 - Never log or document token, env, payment, Firebase, or credential values.
 
 ## 4. Components, Forms, and UI

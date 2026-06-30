@@ -37,10 +37,12 @@ Document:
 - error alert/toast pattern
 - query/mutation hooks and refetch/navigation side effects
 - backend contract regeneration command
+- screen/API contract maps when screens, navigation params, contexts, generated clients, or native permission flows depend on backend/API/config contracts
 
 Rules:
 
 - Treat generated API files as generated output.
+- Update relevant contract maps when screen params, request/response fields, generated models, native permission/config keys, or auth state contracts change.
 - Do not document token/auth payload/payment payload values.
 - Check chat/WebSocket or push-token auth when auth state changes.
 

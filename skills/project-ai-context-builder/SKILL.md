@@ -20,8 +20,9 @@ When the user only says `@project-ai-context-builder 를 적용해줘`, `$projec
    - **Deepen**: user names a module/folder. Preserve existing docs and add/update module detail and folder `AGENTS.md` for that area.
 3. Before writing, create an internal analysis strategy from the detected project type and existing docs, then verify that the strategy supports the purpose: AI-led development continuity across broken/new sessions.
 4. Keep folder docs at useful work-area depth. Cover modules, domains, routes, components, services, API clients, config, native folders, and high-risk subfolders, but do not create noisy per-file docs or AGENTS for generated/build/vendor output.
-5. For frontend projects, include design/UI/responsive/component-system guidance.
-6. After writing, re-check the strategy and output for gaps, then apply small improvements before final reporting.
+5. Create contract maps when confirmed UI screens, templates, API clients, generated boundaries, schemas, env keys, or integrations directly depend on cross-boundary contracts.
+6. For frontend projects, include design/UI/responsive/component-system guidance.
+7. After writing, re-check the strategy and output for gaps, then apply small improvements before final reporting.
 
 ## Analysis Depth Contract
 
@@ -31,7 +32,11 @@ Document by stable work area and meaningful folder responsibility, not by every 
 
 Record app-wide or cross-cutting files in `AI_CONTEXT/08_MODULE_DETAIL/` or the project-specific module-detail section when they are central entrypoints, shared utilities, generated/API boundaries, security/auth boundaries, state/provider boundaries, design-system roots, native/build boundaries, or high-risk integrations. Include file names only when they help future sessions understand ownership, impact, or modification risk.
 
-Use `references/depth-and-exclusion-policy.md` to decide what to include, exclude, or document as an exception.
+Use `references/depth-and-exclusion-policy.md`, `references/contract-map-policy.md`, and `references/document-size-policy.md` to decide what to include, exclude, map, split, or keep concise.
+
+## Fallback Strategy
+
+When no stack-specific reference clearly matches, use `references/fallback-strategy.md`. Analyze the repository from concrete signals: manifests, source roots, entrypoints, routes/screens, API/client boundaries, state/data/persistence, config/env, build/test/run commands, assets, and risky integrations. Do not invent stack-specific rules; record unknowns as `확인 필요`.
 
 ## Non-Negotiable Rules
 
@@ -53,21 +58,22 @@ Before writing docs in a repository:
 3. Read the project development rules doc if present, such as `AI_CONTEXT/06_DEVELOPMENT/AI_DEV_RULE.md` or `AI_CONTEXT/07_DEVELOPMENT/AI_DEV_RULE.md`.
 4. Read the closest existing `AGENTS.md` for any folder being documented.
 5. Read `references/project-type-detection.md`.
-6. Read `references/execution-contract.md`, `references/depth-and-exclusion-policy.md`, `references/ai-context-structure.md`, `references/agents-template.md`, and `references/safety-rules.md`.
+6. Read `references/execution-contract.md`, `references/depth-and-exclusion-policy.md`, `references/contract-map-policy.md`, `references/document-size-policy.md`, `references/ai-context-structure.md`, `references/agents-template.md`, and `references/safety-rules.md`.
 7. Based on detected stack, read one or more framework references:
    - Java/Spring Boot: `references/spring-boot-analysis.md`
    - React/Vite/Next.js web: `references/frontend-react-analysis.md`
    - React Native/mobile: `references/react-native-analysis.md`
    - Multi-project repository outputs: `references/multi-project-patterns.md`
-8. Before final validation/reporting, read `references/quality-check.md` and include its result checklist in the final answer.
-9. For reusable request wording, read `references/prompt-patterns.md` when the user asks how to invoke this skill or wants prompts.
+8. If no framework reference clearly matches, read `references/fallback-strategy.md`.
+9. Before final validation/reporting, read `references/quality-check.md` and include its result checklist in the final answer.
+10. For reusable request wording, read `references/prompt-patterns.md` when the user asks how to invoke this skill or wants prompts.
 
 ## Workflow
 
 1. Inspect repository structure with fast file search (`rg --files`, `find`, build/package files, source roots, resources, tests). Exclude generated/vendor output such as `node_modules`, `build`, `dist`, `.next`, `.gradle`, `Pods`, `.cxx`, and `vendor/bundle` unless specifically needed.
 2. Detect language, project type, documentation mode, and existing context quality.
 3. Identify framework, package manager, modules, entrypoints, routing/navigation, API clients, state/context, domain flows, build/test commands, profiles/env files, generated code, design system, native areas, and external integrations.
-4. Draft an internal analysis strategy using `references/execution-contract.md` and `references/depth-and-exclusion-policy.md`; check it against the goal before writing.
+4. Draft an internal analysis strategy using `references/execution-contract.md`, `references/depth-and-exclusion-policy.md`, `references/contract-map-policy.md`, and `references/document-size-policy.md`; check it against the goal before writing.
 5. Analyze code flow appropriate to the project type:
    - Backend: Controller/API, Service/Facade, Repository, Entity, DTO, events, scheduler, security, exception handling, DB/migration.
    - React Web/Next: route/page, component/module/ui, API client/generated files, auth/session, hooks/store/context, form/validation, design/responsive, assets.
@@ -77,14 +83,18 @@ Before writing docs in a repository:
 7. Create or refresh root `AGENTS.md` using the template contract in `references/agents-template.md`.
 8. Create or refresh folder-level `AGENTS.md` for every meaningful work folder, including deep subfolders only when they have distinct responsibilities.
 9. Add module detail docs under `AI_CONTEXT/08_MODULE_DETAIL/` or the project-specific module-detail section for large modules, business-heavy packages, app-wide files, shared utilities, generated/API boundaries, and high-risk integrations.
-10. Update `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`.
-11. Validate docs for coverage, secret safety, documentation-only changes, useful depth, and the quality checklist in `references/quality-check.md`.
-12. Re-read the generated/updated root `AGENTS.md`, `00_START_HERE.md`, AI dev rule, and representative folder `AGENTS.md`; apply final improvements if gaps remain.
-13. Report generated files, confirmed stack/domain/feature/architecture rules, `확인 필요`, validation result, and recommended next analysis area.
+10. Add contract maps under module detail docs when UI/screens/templates/API clients/config depend on cross-boundary contracts.
+11. Keep docs within the size policy; split long module detail or contract maps into focused subdocs instead of making a single noisy file.
+12. Update `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`.
+13. Validate docs for coverage, contract maps, size control, secret safety, documentation-only changes, useful depth, and the quality checklist in `references/quality-check.md`.
+14. Re-read the generated/updated root `AGENTS.md`, `00_START_HERE.md`, AI dev rule, and representative folder `AGENTS.md`; apply final improvements if gaps remain.
+15. Report generated files, confirmed stack/domain/feature/architecture rules, `확인 필요`, validation result, and recommended next analysis area.
 
 ## Adaptive Output Contract
 
 Always create root `AGENTS.md`, `AI_CONTEXT/00_START_HERE.md`, project overview/stack/structure docs, development rules, operation/build docs, module detail docs, and `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`.
+
+Create contract maps only when confirmed dependencies exist. Put them in module detail sections using names that match the project shape, such as `WEB_TEMPLATE_API_MAP.md`, `FRONTEND_API_CONTRACT_MAP.md`, `SCREEN_API_MAP.md`, `API_CLIENT_CONTRACT_MAP.md`, or `CONFIG_CONTRACT_MAP.md`.
 
 Choose middle sections by project type:
 
@@ -131,6 +141,8 @@ Before final reporting:
 - Confirm folder-level `AGENTS.md` coverage for meaningful work folders.
 - Confirm Initialize/Refresh/Deepen reached useful folder-level depth, not only top-level summaries.
 - Confirm app-wide entrypoints, shared utilities, generated/API boundaries, and high-risk integrations are reflected in module detail docs when present.
+- Confirm contract maps exist for confirmed cross-boundary dependencies, and avoid creating contract maps when no direct dependency is proven.
+- Confirm docs follow the size policy and split large detail into focused docs when needed.
 - Confirm generated/vendor/build output was not documented as source responsibility unless explicitly relevant.
 - Confirm root `AGENTS.md` follows the role, required reading, rules, do-not, related context, check-together shape.
 - Confirm frontend docs include design/UI/responsive guidance when applicable.
