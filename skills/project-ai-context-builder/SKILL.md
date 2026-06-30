@@ -23,6 +23,16 @@ When the user only says `@project-ai-context-builder 를 적용해줘`, `$projec
 5. For frontend projects, include design/UI/responsive/component-system guidance.
 6. After writing, re-check the strategy and output for gaps, then apply small improvements before final reporting.
 
+## Analysis Depth Contract
+
+Apply the same useful-depth standard in Initialize, Refresh, and Deepen modes. Initialize mode must not stop at top-level or one-depth folder summaries when the repository contains meaningful feature, module, route, service, API, state, design, utility, native, or integration boundaries.
+
+Document by stable work area and meaningful folder responsibility, not by every file. Create folder-level `AGENTS.md` for folders that future AI work is likely to touch or inspect for impact analysis. Do not create noisy per-file docs or one `AGENTS.md` per ordinary leaf file.
+
+Record app-wide or cross-cutting files in `AI_CONTEXT/08_MODULE_DETAIL/` or the project-specific module-detail section when they are central entrypoints, shared utilities, generated/API boundaries, security/auth boundaries, state/provider boundaries, design-system roots, native/build boundaries, or high-risk integrations. Include file names only when they help future sessions understand ownership, impact, or modification risk.
+
+Use `references/depth-and-exclusion-policy.md` to decide what to include, exclude, or document as an exception.
+
 ## Non-Negotiable Rules
 
 - Do not modify source code, runtime configuration, migrations, generated API files, native build settings, package locks, or build behavior unless explicitly requested.
@@ -43,7 +53,7 @@ Before writing docs in a repository:
 3. Read the project development rules doc if present, such as `AI_CONTEXT/06_DEVELOPMENT/AI_DEV_RULE.md` or `AI_CONTEXT/07_DEVELOPMENT/AI_DEV_RULE.md`.
 4. Read the closest existing `AGENTS.md` for any folder being documented.
 5. Read `references/project-type-detection.md`.
-6. Read `references/execution-contract.md`, `references/ai-context-structure.md`, `references/agents-template.md`, and `references/safety-rules.md`.
+6. Read `references/execution-contract.md`, `references/depth-and-exclusion-policy.md`, `references/ai-context-structure.md`, `references/agents-template.md`, and `references/safety-rules.md`.
 7. Based on detected stack, read one or more framework references:
    - Java/Spring Boot: `references/spring-boot-analysis.md`
    - React/Vite/Next.js web: `references/frontend-react-analysis.md`
@@ -57,7 +67,7 @@ Before writing docs in a repository:
 1. Inspect repository structure with fast file search (`rg --files`, `find`, build/package files, source roots, resources, tests). Exclude generated/vendor output such as `node_modules`, `build`, `dist`, `.next`, `.gradle`, `Pods`, `.cxx`, and `vendor/bundle` unless specifically needed.
 2. Detect language, project type, documentation mode, and existing context quality.
 3. Identify framework, package manager, modules, entrypoints, routing/navigation, API clients, state/context, domain flows, build/test commands, profiles/env files, generated code, design system, native areas, and external integrations.
-4. Draft an internal analysis strategy using `references/execution-contract.md`; check it against the goal before writing.
+4. Draft an internal analysis strategy using `references/execution-contract.md` and `references/depth-and-exclusion-policy.md`; check it against the goal before writing.
 5. Analyze code flow appropriate to the project type:
    - Backend: Controller/API, Service/Facade, Repository, Entity, DTO, events, scheduler, security, exception handling, DB/migration.
    - React Web/Next: route/page, component/module/ui, API client/generated files, auth/session, hooks/store/context, form/validation, design/responsive, assets.
@@ -66,7 +76,7 @@ Before writing docs in a repository:
 6. Create or refresh the adaptive `AI_CONTEXT` output contract.
 7. Create or refresh root `AGENTS.md` using the template contract in `references/agents-template.md`.
 8. Create or refresh folder-level `AGENTS.md` for every meaningful work folder, including deep subfolders only when they have distinct responsibilities.
-9. Add module detail docs under `AI_CONTEXT/08_MODULE_DETAIL/` or the project-specific module-detail section for large modules or business-heavy packages.
+9. Add module detail docs under `AI_CONTEXT/08_MODULE_DETAIL/` or the project-specific module-detail section for large modules, business-heavy packages, app-wide files, shared utilities, generated/API boundaries, and high-risk integrations.
 10. Update `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`.
 11. Validate docs for coverage, secret safety, documentation-only changes, useful depth, and the quality checklist in `references/quality-check.md`.
 12. Re-read the generated/updated root `AGENTS.md`, `00_START_HERE.md`, AI dev rule, and representative folder `AGENTS.md`; apply final improvements if gaps remain.
@@ -111,7 +121,7 @@ React Native candidates:
 - `android`, `ios`, permission/native module/signing-related folders
 - navigation files such as `StackNav.tsx` should be referenced from folder guides
 
-Depth rule: document stable work areas and meaningful subdomains, not every file. Create per-file detail only inside module-detail docs when a file is a central entrypoint, generated boundary, or high-risk integration.
+Depth rule: document stable work areas and meaningful subdomains, not every file. Use `references/depth-and-exclusion-policy.md` to include folder-level responsibilities, exclude noisy folders, and record central files only in module-detail docs when they affect app-wide behavior or modification risk.
 
 ## Validation Checklist
 
@@ -119,6 +129,8 @@ Before final reporting:
 
 - Confirm all expected docs exist.
 - Confirm folder-level `AGENTS.md` coverage for meaningful work folders.
+- Confirm Initialize/Refresh/Deepen reached useful folder-level depth, not only top-level summaries.
+- Confirm app-wide entrypoints, shared utilities, generated/API boundaries, and high-risk integrations are reflected in module detail docs when present.
 - Confirm generated/vendor/build output was not documented as source responsibility unless explicitly relevant.
 - Confirm root `AGENTS.md` follows the role, required reading, rules, do-not, related context, check-together shape.
 - Confirm frontend docs include design/UI/responsive guidance when applicable.

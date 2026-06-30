@@ -29,6 +29,8 @@ Use when no meaningful `AI_CONTEXT` and root/folder `AGENTS.md` exist.
 - Create root `AGENTS.md`.
 - Create adaptive AI_CONTEXT structure.
 - Create folder-level `AGENTS.md` for meaningful work areas.
+- Apply the same folder-level depth standard as Refresh; do not stop at top-level summaries when meaningful subfolders exist.
+- Record app-wide entrypoints, shared utilities, generated/API boundaries, and high-risk integrations in module detail docs.
 
 ### Refresh
 
@@ -38,6 +40,8 @@ Use when docs already exist or appear partially generated.
 - Compare current docs against current code structure.
 - Improve stale, shallow, missing, or misleading docs.
 - Preserve useful project-specific numbering and naming.
+- Deepen shallow top-level docs to meaningful work-area depth without creating per-file inventories.
+- Ensure module detail docs mention app-wide files, cross-cutting utilities, and high-risk boundaries when present.
 - Update changelog.
 
 ### Deepen
@@ -64,6 +68,8 @@ If the answer is weak, adjust the strategy before writing.
 
 ## 4. Depth Control
 
+Use `depth-and-exclusion-policy.md` as the decision source for include, exclude, and exception cases.
+
 Good depth:
 
 - root, app/module, major feature/domain packages
@@ -72,10 +78,12 @@ Good depth:
 - API client/generated boundary folders
 - shared components, form modules, hooks/context/store, styles/theme/assets
 - native Android/iOS folders when relevant
+- app-wide entrypoints and cross-cutting utilities in module detail docs
 
 Too deep:
 
 - one `AGENTS.md` per ordinary file
+- file-by-file inventories of ordinary leaf components, simple types, trivial helpers, generated models, or static assets
 - generated output folders
 - dependency/vendor/build folders
 - tiny folders whose only role is already obvious from the parent
