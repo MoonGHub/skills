@@ -62,7 +62,7 @@ Root `AGENTS.md` is the top-level Codex instruction file, not a generic human-on
 ## Rules
 
 - 코드 수정 전 관련 문서를 확인하고 영향 범위를 먼저 파악한다.
-- 코드 또는 문서 수정 후 의미 있는 변경 이력을 `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`에 기록한다.
+- 코드 또는 문서 수정 후 의미 있는 변경은 `AI_CONTEXT/99_CHANGELOG/YYYY-MM/YYYY-MM-DD.md`에 간결하게 기록하고 `AI_CHANGELOG.md`는 인덱스로만 유지한다.
 - API 변경 시 관련 API contract/error/auth 문서를 확인한다.
 - DB 변경 시 DB/JPA/migration 문서를 확인한다.
 - UI 변경 시 design/component/responsive 문서를 확인한다.
@@ -89,7 +89,7 @@ Root `AGENTS.md` is the top-level Codex instruction file, not a generic human-on
 - 개발 규칙: `AI_CONTEXT/<DEVELOPMENT_SECTION>/`
 - 운영/실행: `AI_CONTEXT/<OPERATION_SECTION>/`
 - 모듈 상세: `AI_CONTEXT/<MODULE_DETAIL_SECTION>/`
-- 변경 이력: `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`
+- 변경 이력 인덱스: `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`
 
 ## Check Together
 

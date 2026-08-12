@@ -13,7 +13,9 @@ Every project should have:
 - development rules: `06_DEVELOPMENT` or project-specific equivalent
 - operation/build docs: `07_OPERATION`, `08_OPERATION`, or project-specific equivalent
 - module detail docs: `08_MODULE_DETAIL` or `09_MODULE_DETAIL`
-- `99_CHANGELOG/AI_CHANGELOG.md`
+- `99_CHANGELOG/AI_CHANGELOG.md`: small reading/search index with one latest-record link per month
+- `99_CHANGELOG/YYYY-MM/YYYY-MM-DD.md`: one concise daily record containing all meaningful changes completed that date
+- `99_CHANGELOG/YYYY-MM/evidence/`: optional detailed investigation or validation evidence; create only when needed
 - contract maps under module detail when confirmed cross-boundary dependencies exist, such as UI/API fields, screen params, generated clients, env/config keys, schema/entity impacts, or external payload mappings
 
 ## Backend/API Variant
@@ -69,5 +71,5 @@ Include these in the project AI dev rule doc:
 - Check migration rules before Entity/DB changes.
 - Check native docs before Android/iOS/permission/signing changes.
 - Preserve existing architecture and generated-file boundaries.
-- Update `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md` after work.
+- Keep `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md` as the index and update the current `AI_CONTEXT/99_CHANGELOG/YYYY-MM/YYYY-MM-DD.md` after meaningful work, following `changelog-policy.md`.
 - Refresh folder `AGENTS.md` if it becomes stale.

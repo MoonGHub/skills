@@ -51,4 +51,4 @@ Keep maps compact. Prefer a table with:
 
 ## 5. Maintenance Rule
 
-When API responses, route params, generated clients, entity/schema fields, env keys, external payload mappings, or UI field usage change, update the relevant contract map and `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`.
+When API responses, route params, generated clients, entity/schema fields, env keys, external payload mappings, or UI field usage change, update the relevant contract map and the current `AI_CONTEXT/99_CHANGELOG/YYYY-MM/YYYY-MM-DD.md` daily record. Keep `AI_CHANGELOG.md` as the index and follow `changelog-policy.md`.

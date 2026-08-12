@@ -58,7 +58,7 @@ Before writing docs in a repository:
 3. Read the project development rules doc if present, such as `AI_CONTEXT/06_DEVELOPMENT/AI_DEV_RULE.md` or `AI_CONTEXT/07_DEVELOPMENT/AI_DEV_RULE.md`.
 4. Read the closest existing `AGENTS.md` for any folder being documented.
 5. Read `references/project-type-detection.md`.
-6. Read `references/execution-contract.md`, `references/depth-and-exclusion-policy.md`, `references/contract-map-policy.md`, `references/document-size-policy.md`, `references/ai-context-structure.md`, `references/agents-template.md`, and `references/safety-rules.md`.
+6. Read `references/execution-contract.md`, `references/depth-and-exclusion-policy.md`, `references/contract-map-policy.md`, `references/document-size-policy.md`, `references/ai-context-structure.md`, `references/agents-template.md`, `references/changelog-policy.md`, and `references/safety-rules.md`.
 7. Based on detected stack, read one or more framework references:
    - Java/Spring Boot: `references/spring-boot-analysis.md`
    - React/Vite/Next.js web: `references/frontend-react-analysis.md`
@@ -73,7 +73,7 @@ Before writing docs in a repository:
 1. Inspect repository structure with fast file search (`rg --files`, `find`, build/package files, source roots, resources, tests). Exclude generated/vendor output such as `node_modules`, `build`, `dist`, `.next`, `.gradle`, `Pods`, `.cxx`, and `vendor/bundle` unless specifically needed.
 2. Detect language, project type, documentation mode, and existing context quality.
 3. Identify framework, package manager, modules, entrypoints, routing/navigation, API clients, state/context, domain flows, build/test commands, profiles/env files, generated code, design system, native areas, and external integrations.
-4. Draft an internal analysis strategy using `references/execution-contract.md`, `references/depth-and-exclusion-policy.md`, `references/contract-map-policy.md`, and `references/document-size-policy.md`; check it against the goal before writing.
+4. Draft an internal analysis strategy using `references/execution-contract.md`, `references/depth-and-exclusion-policy.md`, `references/contract-map-policy.md`, `references/document-size-policy.md`, and `references/changelog-policy.md`; check it against the goal before writing.
 5. Analyze code flow appropriate to the project type:
    - Backend: Controller/API, Service/Facade, Repository, Entity, DTO, events, scheduler, security, exception handling, DB/migration.
    - React Web/Next: route/page, component/module/ui, API client/generated files, auth/session, hooks/store/context, form/validation, design/responsive, assets.
@@ -85,14 +85,14 @@ Before writing docs in a repository:
 9. Add module detail docs under `AI_CONTEXT/08_MODULE_DETAIL/` or the project-specific module-detail section for large modules, business-heavy packages, app-wide files, shared utilities, generated/API boundaries, and high-risk integrations.
 10. Add contract maps under module detail docs when UI/screens/templates/API clients/config depend on cross-boundary contracts.
 11. Keep docs within the size policy; split long module detail or contract maps into focused subdocs instead of making a single noisy file.
-12. Update `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`.
+12. Keep `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md` as the small index and record meaningful changes in the current `AI_CONTEXT/99_CHANGELOG/YYYY-MM/YYYY-MM-DD.md` according to `references/changelog-policy.md`. Create same-month evidence only when needed, and migrate a legacy monolith date by date before replacing it with the index.
 13. Validate docs for coverage, contract maps, size control, secret safety, documentation-only changes, useful depth, and the quality checklist in `references/quality-check.md`.
 14. Re-read the generated/updated root `AGENTS.md`, `00_START_HERE.md`, AI dev rule, and representative folder `AGENTS.md`; apply final improvements if gaps remain.
 15. Report generated files, confirmed stack/domain/feature/architecture rules, `확인 필요`, validation result, and recommended next analysis area.
 
 ## Adaptive Output Contract
 
-Always create root `AGENTS.md`, `AI_CONTEXT/00_START_HERE.md`, project overview/stack/structure docs, development rules, operation/build docs, module detail docs, and `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md`.
+Always create root `AGENTS.md`, `AI_CONTEXT/00_START_HERE.md`, project overview/stack/structure docs, development rules, operation/build docs, module detail docs, the small `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md` index, and a `AI_CONTEXT/99_CHANGELOG/YYYY-MM/YYYY-MM-DD.md` daily record for meaningful changes. Use no monthly `README.md` or per-change record files; place optional detail under the same month's `evidence/`.
 
 Create contract maps only when confirmed dependencies exist. Put them in module detail sections using names that match the project shape, such as `WEB_TEMPLATE_API_MAP.md`, `FRONTEND_API_CONTRACT_MAP.md`, `SCREEN_API_MAP.md`, `API_CLIENT_CONTRACT_MAP.md`, or `CONFIG_CONTRACT_MAP.md`.
 
@@ -143,6 +143,8 @@ Before final reporting:
 - Confirm app-wide entrypoints, shared utilities, generated/API boundaries, and high-risk integrations are reflected in module detail docs when present.
 - Confirm contract maps exist for confirmed cross-boundary dependencies, and avoid creating contract maps when no direct dependency is proven.
 - Confirm docs follow the size policy and split large detail into focused docs when needed.
+- Confirm changelog paths, the small index, concise daily entries, optional same-month evidence links, and legacy migration follow `references/changelog-policy.md`.
+- Confirm multi-project changelogs record details once at the lowest owning project and do not duplicate service details at root.
 - Confirm generated/vendor/build output was not documented as source responsibility unless explicitly relevant.
 - Confirm root `AGENTS.md` follows the role, required reading, rules, do-not, related context, check-together shape.
 - Confirm frontend docs include design/UI/responsive guidance when applicable.

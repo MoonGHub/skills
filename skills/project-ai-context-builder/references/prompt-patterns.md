@@ -14,6 +14,7 @@ Default analysis should reach meaningful folder/work-area depth, record app-wide
 
 When direct API/schema/config/route contracts are found, the result should include a compact contract map. Keep documents concise and split oversized module detail into focused subdocs.
 
+Keep `AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md` as a small index and write meaningful changes to the current `YYYY-MM/YYYY-MM-DD.md` daily record. Use same-month evidence only when detailed investigation must be preserved.
 
 ## Initial Repository Analysis
 
@@ -87,5 +88,5 @@ $project-ai-context-builder
 삭제나 코드 수정은 하지 말고, stale한 문서는 새 내용으로 정리해줘.
 상위 요약이 얕으면 의미 있는 폴더/기능/모듈 단위까지 보강하고, 핵심 파일/유틸은 module detail에 반영해줘.
 기존 문서에 빠진 contract map과 너무 큰 문서의 분할 필요성을 함께 점검해줘.
-변경 이력은 AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md에 남겨줘.
+AI_CONTEXT/99_CHANGELOG/AI_CHANGELOG.md는 인덱스로 유지하고, 변경 이력은 `99_CHANGELOG/YYYY-MM/YYYY-MM-DD.md`의 현재 날짜 파일에 간결하게 남겨줘. 상세 근거가 필요한 경우에만 같은 월의 `evidence/`에 분리해줘.
 ```

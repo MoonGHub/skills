@@ -9,7 +9,7 @@ Root `AGENTS.md` should state:
 - the project identity and responsibility
 - required reading order: root `AGENTS.md`, `AI_CONTEXT/00_START_HERE.md`, project AI dev rule, closest folder `AGENTS.md`, related AI_CONTEXT docs
 - impact checks before code changes
-- changelog update rule
+- changelog update rule: record details once at the lowest owning project; root records only cross-project contracts
 - API/UI/native/DB/design docs to read for each change type
 - generated file policy
 - secret handling rule
@@ -66,3 +66,10 @@ Observed useful sections:
 - Ask to rewrite stale docs from current code when existing docs are present.
 - Ask for module-by-module deepening after the first pass.
 - Require final reports to list generated docs, confirmed facts, assumptions, `확인 필요`, validation, and next recommended area.
+
+## Changelog Ownership Pattern
+
+- Keep a small index and `YYYY-MM/YYYY-MM-DD.md` daily records in each independently documented project.
+- Record service-internal changes only in that service's daily record.
+- Record repository-wide or cross-service contracts at root without copying service details; link the relevant service record when useful.
+- Follow `changelog-policy.md` for optional evidence and legacy migration.

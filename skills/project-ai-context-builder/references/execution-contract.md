@@ -42,7 +42,7 @@ Use when docs already exist or appear partially generated.
 - Preserve useful project-specific numbering and naming.
 - Deepen shallow top-level docs to meaningful work-area depth without creating per-file inventories.
 - Ensure module detail docs mention app-wide files, cross-cutting utilities, and high-risk boundaries when present.
-- Update changelog.
+- Update the small changelog index and current daily record. If a legacy monolith exists, migrate it date by date according to `changelog-policy.md`.
 
 ### Deepen
 
@@ -64,6 +64,7 @@ Before writing docs, internally verify:
 - Does it avoid source-code edits and generated/vendor output?
 - Does it keep docs concise enough to be reusable?
 - Does it follow the document size policy and split oversized docs?
+- Does its changelog use the `YYYY-MM/YYYY-MM-DD.md` daily structure, concise entries, and optional same-month evidence?
 - Does it separate confirmed facts, assumptions, and `확인 필요`?
 
 If the answer is weak, adjust the strategy before writing.
@@ -96,10 +97,11 @@ After writing docs, re-check:
 
 - root `AGENTS.md` follows the required shape
 - `00_START_HERE` gives a clear next-session reading order
-- AI dev rules enforce changelog and nearest AGENTS reading
+- AI dev rules enforce the daily changelog policy and nearest AGENTS reading
 - folder AGENTS coverage is neither too sparse nor too noisy
 - contract maps exist only where confirmed dependencies make them useful
 - docs follow the size policy and avoid oversized catch-all files
+- `AI_CHANGELOG.md` is a small index, daily record paths are valid, and evidence is optional and linked
 - frontend projects include design/responsive/component guidance
 - secret scan does not reveal literal sensitive values
 - final report includes remaining `확인 필요` and next steps
