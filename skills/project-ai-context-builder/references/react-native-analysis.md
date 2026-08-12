@@ -1,85 +1,33 @@
-# React Native Analysis Checklist
+# React Native Analysis
 
-Use this reference for React Native/mobile apps, including cross-platform apps and apps with Android/iOS native folders.
+Use this reference only for React Native/mobile projects with Metro and Android/iOS targets.
 
-## 1. Stack and Build
+## Stack and Boot
 
-- package manager and Node engine
-- React Native, React, TypeScript versions
-- navigation library and root navigator files
-- state/API context, generated API client, WebSocket/chat if present
-- NativeWind/theme/design approach
-- Firebase, push notification, storage, social login, WebView, image picker, permissions
-- commands: start, android, ios, pod-install, build:android, gen-api, tsc, lint, test
+Inspect manifests/lockfiles, `App.*`, navigation roots, Metro/Babel/TypeScript config, `android/`, `ios/`, API/state providers, permissions, assets/theme, native modules, tests, and confirmed build configuration.
 
-## 2. Boot and Navigation
+Record package manager and versions, app bootstrap/splash/auth gate, navigator hierarchy, `RootStackParamList` or equivalent, initial/reset behavior, state/API ownership, generated-client source, and canonical start/typecheck/lint/test/generation/device/build commands.
 
-Document:
+## Screen, API, and State Contracts
 
-- app entrypoint and boot/splash flow
-- auth gate and initial route reset logic
-- navigator hierarchy and `RootStackParamList`
-- screen groups and route params
-- header exceptions or per-screen layout behavior
+Trace representative screen flows through navigation params, contexts/hooks/store, generated or handwritten clients, request/response fields, local persistence, permissions, media, WebView, push/chat, and success/error/navigation effects.
 
-Rules:
+Document route-param alignment, auth/logout/token-refresh side effects, query/mutation/refetch behavior, offline/storage behavior when present, and API regeneration boundaries. Create a map only for confirmed screen/navigation/API/native-config dependencies.
 
-- Keep route params and `RootStackParamList` aligned.
-- Check all navigate calls when adding or renaming screens.
-- Do not bypass auth/onboarding gates without explicit requirement.
+## Native Boundaries
 
-## 3. API, Auth, and State
+Identify source versus generated native output, permissions and deep links, native modules, Gradle/CocoaPods ownership, Firebase/Google service integration boundary, app identifiers, signing/provisioning ownership, icons/splash, target variants, and simulator/device assumptions.
 
-Document:
+Capture platform differences, source-of-truth files, and coordinated checks without copying signing or service values. Exclude `.cxx`, native build output, Pods, and generated client/model internals.
 
-- API context/provider and generated API file
-- token/header injection and logout behavior
-- error alert/toast pattern
-- query/mutation hooks and refetch/navigation side effects
-- backend contract regeneration command
-- screen/API contract maps when screens, navigation params, contexts, generated clients, or native permission flows depend on backend/API/config contracts
+## UI, Theme, and Assets
 
-Rules:
+Record shared UI/typography wrappers, tokens/theme or NativeWind conventions, safe-area and device-size behavior, accessibility, asset registration, media constraints, and platform-specific component behavior. Avoid ordinary screen/component inventories.
 
-- Treat generated API files as generated output.
-- Update relevant contract maps when screen params, request/response fields, generated models, native permission/config keys, or auth state contracts change.
-- Do not document token/auth payload/payment payload values.
-- Check chat/WebSocket or push-token auth when auth state changes.
+## Output Focus
 
-## 4. Native Android/iOS
-
-Document:
-
-- Android/iOS folders and whether they are source vs generated/vendor output
-- permissions, intent/deep link, app icons/splash, signing/build config
-- CocoaPods, Gradle, Firebase/GoogleService files, native modules
-- simulator/device assumptions and build commands
-
-Rules:
-
-- Do not change signing, keystore, provisioning, Firebase config, or permissions casually.
-- Do not record signing/Firebase/private key values.
-- Separate source files from generated native build output such as `.cxx`, `build`, and `Pods`.
-
-## 5. UI, Theme, and Assets
-
-Document:
-
-- shared components, module components, screen-specific components
-- theme tokens, typography, NativeWind class patterns
-- image/media upload constraints and asset registration
-- responsive/device rules and safe-area behavior
-
-Rules:
-
-- Prefer existing shared components and typography wrappers.
-- Check Android/iOS behavior for file/media/WebView/permission changes.
-
-## 6. Folder AGENTS Targets
-
-Consider docs for:
-
-- `screens`, screen subdomains, navigation files
-- `components`, `components/module`, `components/ui`
-- `contexts`, `hooks`, `libs`, `utils`, `types`, `theme`, `assets`
-- `android`, `ios`, native config areas
+- `01_PROJECT`: React Native/toolchain/package manager, app targets and commands.
+- `02_ARCHITECTURE`: boot, navigation, auth/state/API direction.
+- `03_FEATURE`, `04_API`, `05_NATIVE`, `06_DESIGN`: applicable current contracts.
+- Development/operation: portable Android/iOS prerequisites, variants, permissions, generation, gates, and artifacts.
+- Module detail/folder AGENTS: navigation root, screen domains, API/state providers, native permission/module/signing-adjacent areas, theme/assets, and tests with distinct rules.

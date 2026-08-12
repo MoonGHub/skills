@@ -1,26 +1,17 @@
 # Quality Check
 
-Use this checklist before the final report. Report only items that apply to the analyzed repository. Rate each item as `상`, `중`, `하`, or `확인 필요`, and add one short reason.
+Use this only before final reporting. Rate applicable items `상`, `중`, `하`, or `확인 필요` with one short reason; do not repeat the checklist itself in generated docs.
 
-## Result Checklist
+- **Scope and mode**: Initialize/Refresh/Deepen matches the request; Refresh remained incremental unless a full-audit trigger existed.
+- **Routing continuity**: START_HERE and the AGENTS chain route a new session to task-relevant current docs without loading the whole knowledge base.
+- **Source grounding**: current contracts have valid repository-relative anchors; facts, inference, and unknowns are separated.
+- **Refresh provenance**: each used baseline row has a resolvable ancestor revision and current owner boundary; committed, dirty, untracked, and topology changes were accounted for, and only verified rows advanced.
+- **Portable continuation**: operation docs support a clean machine; active unfinished work uses handoff and states commit/push limits.
+- **Ownership preservation**: manual/unknown docs and user rules were preserved; only verified managed docs were retired.
+- **Useful coverage**: meaningful owners, entrypoints, flows, interfaces/data, commands, and high-risk boundaries are covered without file-level or absent-section noise.
+- **Contract ownership**: each confirmed cross-boundary dependency has at most one canonical map and no copied schema/detail.
+- **History quality**: current state was updated before the concise daily record; index, evidence, and multi-project ownership follow policy.
+- **Context efficiency**: rules and facts have one owner, folder AGENTS are local delta, and document splitting improves routing rather than adding navigation.
+- **Safety and change scope**: changed-doc sensitive-pattern matches were reviewed without reporting values; the agent-introduced delta contains no private values or unintended source/runtime/generated/vendor changes, and unrelated pre-existing worktree changes remain untouched.
 
-- 적용 수준: requested mode was handled correctly (`Initialize`, `Refresh`, or `Deepen`) and the generated/updated docs match the requested scope.
-- 프로젝트 분석 수준: stack, structure, entrypoints, modules, flows, API/state/data boundaries, build/test/run commands, and high-risk areas were analyzed from current files.
-- 폴더 단위 분석 깊이: Initialize/Refresh/Deepen reached meaningful work-area depth and did not stop at top-level or one-depth summaries when deeper responsibilities exist.
-- 핵심 파일/유틸 반영: app-wide entrypoints, shared utilities, generated/API boundaries, and high-risk integrations were recorded in module detail docs when present.
-- Contract Map 반영: direct cross-boundary dependencies such as UI-to-API fields, screen params, generated clients, config/env keys, schema/entity impacts, or external payload mappings were documented when confirmed.
-- 문서 크기/분할 적정성: docs follow the size policy, avoid catch-all files, and split large module detail or contract maps into focused docs when needed.
-- 파일 단위 과잉 방지: docs avoid noisy per-file inventories for ordinary leaf components, simple types, trivial helpers, generated internals, and static assets.
-- 제외/예외 정책 준수: excluded generated/vendor/build/cache output by default, and documented exceptions only when they affect ownership, impact, or modification risk.
-- AI_CONTEXT 완성도: start guide, project overview, architecture/feature/domain docs, development rules, operation docs, module detail docs, and changelog are present when relevant.
-- 변경 이력 구조: `AI_CHANGELOG.md` is a small index, paths follow `YYYY-MM/YYYY-MM-DD.md`, entries are concise, and optional evidence is same-month and linked.
-- 변경 이력 소유권: multi-project root and service records avoid duplicated detail and record changes at the lowest owning project.
-- AGENTS.md 실용성: root and folder guides provide role, rules, do-not items, related context, and check-together paths that help future work.
-- 컨텍스트 지속성: a new session can resume work by following the reading order, impact checks, folder guides, and changelog.
-- 안전성/보안성: docs avoid source changes, generated/vendor output as source ownership, and literal secret values.
-- 변경 추적성: generated/updated paths, validation result, skipped tests reason, and remaining `확인 필요` are reported.
-- 컨텍스트 효율: docs are concise, avoid noisy per-file coverage, and place detailed guidance only where it helps future work.
-
-## Reporting Rule
-
-Include a `품질 체크 결과` section in the final answer. Keep it short; use a compact table or bullets.
+Report generated/updated/retired/preserved paths, remaining `확인 필요`, validation performed, and why application tests were skipped when documentation alone changed.

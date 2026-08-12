@@ -1,80 +1,41 @@
-# Spring Boot Analysis Checklist
+# Spring Boot Analysis
 
-Use this reference when the repository is Java/Spring Boot or appears to contain Gradle/Maven modules.
+Use this reference only for Java/Spring Boot or closely related Gradle/Maven services.
 
-## 1. Project Structure
+## Structure and Build
 
-- Detect Gradle/Maven: `settings.gradle`, `build.gradle`, `pom.xml`, wrapper files.
-- Detect multi-module layout and module dependency direction.
-- Locate Spring Boot entrypoint classes with `@SpringBootApplication`.
-- Identify package roots under `src/main/java` and `src/test`.
-- Inspect `src/main/resources`, `templates`, `static`, migration folders, and generated sources.
+Inspect `settings.gradle*`, `build.gradle*`, `pom.xml`, wrappers, `src/main/java`, `src/test`, resources, migrations, templates/static content, and confirmed generated-source configuration.
 
-## 2. Stack
+Record Java/Spring versions, modules and dependency direction, `@SpringBootApplication` entrypoints, package roots, active build tool, test libraries, database/migration tools, external clients, containers, and canonical commands. Distinguish a command found in files from one executed successfully.
 
-Record confirmed versions and libraries from build files:
+## Configuration and Runtime
 
-- Java version
-- Spring Boot version
-- Spring Security, Web MVC, Validation
-- JPA/Hibernate, Querydsl, JDBC
-- Flyway or Liquibase
-- Database driver
-- Thymeleaf or frontend asset approach
-- Test libraries
-- External SDK/API clients
-- Docker or compose files
+Map profile activation, datasource/migration behavior, scheduling conditions, security/session/filter configuration, logging, and external property groups by key name and owner. Identify startup order, required infrastructure, health endpoints, and deployment artifact when confirmed.
 
-Use `확인 필요` when version or runtime DB cannot be proven from files.
+## Request and Domain Flow
 
-## 3. Configuration
+Trace representative flows across:
 
-Analyze without copying secret values:
+- Controller URL/method and request/response DTO
+- Service/facade use case, transaction boundary, events, and state transitions
+- Repository/Querydsl/JDBC access and important search rules
+- Entity/VO/enum relationships, cascade/fetch/orphan removal, auditing, and migration ownership
+- exception/advice mapping, response envelope, authentication and authorization
+- scheduler/listener/external-client behavior and retry/idempotency when present
+- server-rendered template or static consumers of backend fields
 
-- `application.yml`, `application-*.yml`, `.properties`
-- active profile strategy
-- datasource keys, DB type, ddl-auto, migration settings
-- logging levels and file paths
-- scheduler profiles
-- security/session/IP/filter settings
-- external API property groups
+Verify actual dependency direction instead of imposing Controller/Service/Repository conventions on a different architecture.
 
-Document property names and intent, not secret values.
+## High-Risk Boundaries
 
-## 4. Domain and Code Flow
+Prioritize source anchors for security matcher/authority mapping, global exception/response format, transaction boundaries, entity/schema migration, schedulers/events, external integrations, generated clients, shared date/money/upload/masking utilities, and irreversible state transitions.
 
-For each major package:
+Create a contract map only for confirmed DTO/schema/template/client/config propagation. Keep full endpoint or schema detail in the owning API/database document.
 
-- Controller URL, HTTP methods, request/response shape
-- Service responsibilities and transaction boundaries
-- Repository and Querydsl search conditions
-- Entity relationships, enums, cascade/fetch/orphanRemoval
-- Events/listeners and audit/activity log flow
-- Scheduler jobs and profile conditions
-- DTO conversion location
-- Template/static dependencies if server-rendered pages exist
-- Contract maps for confirmed Controller/DTO/schema/template/static/client dependencies
+## Output Focus
 
-## 5. Architecture Rules
-
-Confirm and document:
-
-- Controller must not accumulate business logic.
-- Service owns use cases and transactions.
-- Repository/persistence owns data access only.
-- Entity changes require migration review.
-- API response/error format must not be changed casually.
-- Update relevant contract maps before changing API response fields, DTOs, template field usage, generated clients, schema/entity fields, or external payload mappings.
-- Security matcher and role/authority mapping must be checked before API changes.
-
-## 6. Tests and Operations
-
-Find commands from wrapper/build files and existing docs:
-
-- build command
-- test command
-- run command and profile examples
-- docker/compose startup if present
-- common local failures: DB, migration, env vars, external API credentials
-
-If not verified by execution, write `명령 확인됨, 실행은 확인 필요`.
+- `01_PROJECT`: Java/Spring/build versions, modules, entrypoints, commands.
+- `02_ARCHITECTURE`: request flow, dependency and transaction rules.
+- `03_DOMAIN`, `04_API`, `05_DATABASE`: only confirmed domain/interface/persistence contracts.
+- Development/operation: profiles, portable prerequisites, migrations, canonical gates, deployment/startup.
+- Module detail/folder AGENTS: business-heavy packages and non-obvious security, advice, event, scheduler, migration, external-client, generated, and test boundaries only.

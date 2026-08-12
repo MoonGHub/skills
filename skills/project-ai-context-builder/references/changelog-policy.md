@@ -1,12 +1,8 @@
 # Changelog Policy
 
-Use this reference whenever creating, updating, reading, validating, or migrating project changelogs.
+Use this reference whenever creating, updating, validating, or migrating project changelogs.
 
-Contents: [output](#1-output-contract), [index](#2-index-contract), [daily record](#3-daily-record-contract), [selection](#4-record-selection), [evidence](#5-evidence), [ownership](#6-multi-project-ownership), [migration](#7-legacy-migration), [validation](#8-validation).
-
-## 1. Output Contract
-
-Use one year-month folder level and one record file per calendar day:
+## Structure
 
 ```text
 AI_CONTEXT/99_CHANGELOG/
@@ -18,24 +14,12 @@ AI_CONTEXT/99_CHANGELOG/
         └── 2026-08-12-deployment-validation.md
 ```
 
-- Keep `AI_CHANGELOG.md` as a small, stable index. Do not append detailed changes to it.
-- Name month folders `YYYY-MM`; do not nest them as `YYYY/YYYY-MM`.
-- Name the only daily record `YYYY-MM-DD.md`. Put every meaningful change completed that day in that file.
-- Do not create a monthly `README.md` or one record file per change.
-- Create month and `evidence/` folders only when they have content.
-- Use the documented project timezone; otherwise use the execution environment timezone.
+- Keep `AI_CHANGELOG.md` as a stable reading/search index, never a detailed history.
+- Use one `YYYY-MM` level, not `YYYY/YYYY-MM`, and one `YYYY-MM-DD.md` record per calendar day.
+- Put all meaningful changes completed that day in the daily file; do not create monthly README or per-change files.
+- Create month and evidence folders only when they have content. Use the documented project timezone or the execution environment timezone.
 
-## 2. Index Contract
-
-Keep `AI_CHANGELOG.md` limited to:
-
-- reading and search rules
-- a month table whose row links to that month's latest daily record
-- a warning not to load the full history by default
-
-The subject-specific AI_CONTEXT documents describe current state. Changelog files describe what changed. Read a relevant daily record only when recent context or a past decision is needed, and read evidence only for deeper investigation.
-
-Suggested month table:
+The index contains the reading rule, a warning not to load all history by default, a rule to search targeted month folders by topic/identifier before opening records, and one row per month linked to that month's latest daily record:
 
 ```md
 | Month | Latest record |
@@ -43,64 +27,44 @@ Suggested month table:
 | 2026-08 | [2026-08-12](2026-08/2026-08-12.md) |
 ```
 
-## 3. Daily Record Contract
+## Daily Entry
 
-Append sections in completion order. Update the existing section for a same-day follow-up to the same topic. Record a correction made on a later date in that later date's file instead of rewriting valid history.
+Append sections in completion order. Merge a same-day follow-up into the same topic; put a later correction in the later date instead of rewriting valid history.
 
 ```md
 # 2026-08-12
 
-## backend — JLPT 결과 해설 계약
+## backend — result explanation contract
 
-- 변경: owner-only 결과 해설 API와 지연 media 조회 계약을 연결했습니다.
-- 이유: 새 세션에서도 저장된 결과 해설을 복원하기 위해 변경했습니다.
-- 영향: 결과 API, frontend generated client, private media ticket에 영향을 줍니다.
+- 변경: owner-only result API와 delayed media 조회 계약을 연결했습니다.
+- 이유: 새 세션에서도 저장된 결과를 복원하기 위해 변경했습니다.
+- 영향: result API, generated client, private media ticket에 영향을 줍니다.
 - 검증: 관련 backend test와 frontend typecheck를 통과했습니다.
-- 관련 문서: `AI_CONTEXT/04_API/JLPT.md`
-- 확인 필요: 실제 production media delivery는 미검증입니다.
-- 상세 근거: [통합 검증 기록](evidence/2026-08-12-jlpt-validation.md)
+- 관련 문서: `AI_CONTEXT/04_API/RESULT.md`
+- 확인 필요: production media delivery는 미검증입니다.
+- 상세 근거: [통합 검증](evidence/2026-08-12-result-validation.md)
 ```
 
-- Require change, reason, impact, and validation concepts (`변경`, `이유`, `영향`, `검증` in Korean); write their labels in the detected documentation language.
-- Include related docs, `확인 필요`, and evidence only when applicable.
-- Keep an ordinary entry to roughly 5-10 lines. Report only final pass/fail/skip and the relevant gates, not raw logs.
+Use the documentation language. Every entry needs change, reason, impact, and final validation concepts. Add related docs, unresolved items, and evidence only when useful. Keep an ordinary entry near 5-10 lines and record final pass/fail/skip plus important gates, not raw output.
 
-## 4. Record Selection
+## Selection and Evidence
 
-Record meaningful changes to features or user flows; API, IPC, DB, schema, generated, route, auth, or native contracts; security, recovery, architecture, ownership, build, env, deployment, operations, important bug-prevention rules, or AI_CONTEXT contracts.
+Record durable changes to user flow, interface/API/IPC, DB/schema, generated contracts, route/auth/native behavior, security/recovery, architecture/ownership, build/env/deployment/operations, important recurrence prevention, or AI_CONTEXT contracts.
 
-Do not record formatting-only work, exhaustive file lists, repeated test counts or cleanup results, inconsequential failed attempts, or raw Git/CI logs. Link to current subject docs instead of repeating current-state explanations.
+Do not record formatting-only edits, exhaustive file lists, repeated counts, inconsequential attempts, cleanup repetition, or raw Git/CI logs. Update current-state docs first and link them rather than copying their explanation.
 
-## 5. Evidence
+Create `YYYY-MM/evidence/YYYY-MM-DD-<short-kebab-topic>.md` only for detailed diagnosis, experiments, threat analysis, migration proof, benchmarks, or validation with future audit value. Link it from the daily entry; keep the concise outcome in the daily file. Move detail there if a daily file grows, but never split the date into multiple record files.
 
-Create evidence only when detailed experiments, failure diagnosis, threat analysis, migration proof, benchmarks, or long validation results have future diagnostic or audit value.
+## Ownership and Legacy Migration
 
-- Put it at `AI_CONTEXT/99_CHANGELOG/YYYY-MM/evidence/YYYY-MM-DD-<short-kebab-topic>.md`.
-- Allow multiple evidence files per date and link them from the relevant daily section.
-- Keep the daily file authoritative for the concise outcome; do not duplicate the summary in evidence.
-- If a daily file becomes long, move explanations and experiment sequences to evidence instead of creating another record file.
-- Omit evidence when Git, CI, or the concise daily record is sufficient. If unsure whether a unique confirmed fact may be lost, preserve it in evidence and mark uncertainty as `확인 필요`.
+Record detail once at the lowest project that owns the change. Root records only repository-wide or cross-project contracts and links service records rather than duplicating them.
 
-## 6. Multi-Project Ownership
+For a legacy monolith, inventory date headings without loading the whole file by default, migrate one date block at a time, merge same-date items, preserve final contract/reason/impact/validation/unresolved facts, and move only durable detail to evidence. Preserve ambiguous unique content as `확인 필요`. Verify date coverage, links, and retained decisions before replacing the monolith with the index.
 
-Record a change once at the lowest project that owns it. Root changelogs record only cross-project or repository-wide contracts. Service-internal changes belong only to the service changelog. For a cross-boundary change, summarize only the root-level contract at root and link to service records instead of copying their details.
+## Check
 
-## 7. Legacy Migration
-
-When a large monolithic `AI_CHANGELOG.md` is found:
-
-1. Inventory date headings and process one date block at a time instead of loading the entire file by default.
-2. Merge same-date entries into `YYYY-MM/YYYY-MM-DD.md`.
-3. Preserve final contract, reason, impact, final validation, and unresolved items in concise sections.
-4. Move only important diagnostic or audit detail to same-month evidence. Preserve ambiguous unique facts there as `확인 필요` rather than deleting them.
-5. Verify date coverage, relative links, and retained unique decisions before replacing the monolith with the small index.
-
-Do not add an automatic migration script. Migration requires project-aware judgment.
-
-## 8. Validation
-
-- Confirm paths match `YYYY-MM/YYYY-MM-DD.md`; reject `YYYY/YYYY-MM`, monthly `README.md`, and per-change record files.
-- Confirm each meaningful entry has change, reason, impact, and final validation.
-- Confirm `AI_CHANGELOG.md` contains navigation rather than detailed history.
-- Confirm evidence is optional, linked, same-month, and contains no secret values or real private data.
-- In multi-project repositories, confirm root and service records do not duplicate the same details.
+- path and date shape are exact
+- index is navigation only and points to each month's latest record
+- meaningful entries contain the four required concepts
+- evidence is optional, linked, same-month, and free of private values
+- root and child projects do not duplicate detail
