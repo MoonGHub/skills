@@ -3,7 +3,7 @@
 Use this only before final reporting. Rate applicable items `상`, `중`, `하`, or `확인 필요` with one short reason; do not repeat the checklist itself in generated docs.
 
 - **Scope and mode**: Initialize/Refresh/Deepen matches the request; Refresh remained incremental unless a full-audit trigger existed.
-- **Routing continuity**: START_HERE and the AGENTS chain route a new session to task-relevant current docs without loading the whole knowledge base.
+- **Routing and semantic depth**: START_HERE and the AGENTS chain reach or explicitly route every meaningful owner and high-risk boundary in scope without loading the whole knowledge base; transparent directories and ordinary leaves add no guide noise.
 - **Source grounding**: current contracts have valid repository-relative anchors; facts, inference, and unknowns are separated.
 - **Refresh provenance**: each used baseline row has a resolvable ancestor revision and current owner boundary; committed, dirty, untracked, and topology changes were accounted for, and only verified rows advanced.
 - **Portable continuation**: operation docs support a clean machine; active unfinished work uses handoff and states commit/push limits.
@@ -11,7 +11,7 @@ Use this only before final reporting. Rate applicable items `상`, `중`, `하`,
 - **Useful coverage**: meaningful owners, entrypoints, flows, interfaces/data, commands, and high-risk boundaries are covered without file-level or absent-section noise.
 - **Contract ownership**: each confirmed cross-boundary dependency has at most one canonical map and no copied schema/detail.
 - **History quality**: current state was updated before the concise daily record; index, evidence, and multi-project ownership follow policy.
-- **Context efficiency**: rules and facts have one owner, folder AGENTS are local delta, and document splitting improves routing rather than adding navigation.
+- **Context efficiency**: rules and facts have one owner, folder AGENTS contain only actionable local delta, and semantic depth improves routing without mirroring the directory tree or adding navigation.
 - **Safety and change scope**: changed-doc sensitive-pattern matches were reviewed without reporting values; the agent-introduced delta contains no private values or unintended source/runtime/generated/vendor changes, and unrelated pre-existing worktree changes remain untouched.
 
 Report generated/updated/retired/preserved paths, remaining `확인 필요`, validation performed, and why application tests were skipped when documentation alone changed.

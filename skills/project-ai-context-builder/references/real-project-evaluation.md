@@ -16,21 +16,21 @@ Read this only when maintaining, releasing, or behaviorally evaluating this skil
 
 1. Use a source-complete isolated copy where generated AI context is absent from the evaluator's view; preserve ordinary project documentation as possible canonical input.
 2. Run at least twice. When fresh sessions or isolated agents are available, repeat one repository at the same revision without sharing the first output; otherwise use distinct real repositories or revisions and disclose that independent consistency was not tested.
-3. Compare semantic ownership, routing, source anchors, applicable documents, and `확인 필요`; byte-identical prose is not required.
-4. Fail if the run invents behavior, creates absent-topic placeholders, duplicates manual docs, or cannot route a new task without broad reading.
+3. Compare semantic ownership, the meaningful-boundary inventory, root-to-nearest AGENTS coverage, source anchors, applicable documents, and `확인 필요`; byte-identical prose is not required.
+4. Fail if the run invents behavior, creates absent-topic placeholders, duplicates manual docs, mirrors the physical tree with folder guides, or leaves an independent owner/high-risk boundary behind a generic route that requires broad rediscovery.
 
 ### Refresh
 
 1. Start from real existing context and an earlier verified commit. Use at least one localized commit range and one contract, topology, or owner-boundary range.
 2. On each run, record the baseline revision, current revision, owner paths, committed diff paths, and pre-write dirty/untracked paths. Do not paste raw source or sensitive values into evaluation notes.
-3. Confirm that the run checks manifests/routes, maps changed producers to direct consumers, updates only affected current-state owners, preserves unrelated/manual content, and advances only verified baseline rows.
-4. Include an unchanged-scope control. Fail if a clean worktree is treated as proof of freshness, a relevant overlay is covered by `HEAD`, a changed contract is missed, or unrelated documentation is rewritten.
+3. Confirm that the run checks manifests/routes, compares already routed owners and changed topology with semantic AGENTS coverage, maps changed producers to direct consumers, updates only affected or uncovered owners, preserves unrelated/manual content, and advances only verified baseline rows.
+4. Include an unchanged-scope control. Fail if a clean worktree is treated as proof of freshness, a relevant overlay is covered by `HEAD`, a changed contract is missed, an already routed meaningful owner remains unreachable without broad rediscovery, or unrelated documentation is rewritten.
 
 ### Deepen
 
-1. Choose a real bounded module and identify its nearest AGENTS chain, owning current-state docs, source anchors, and direct boundary consumers before writing.
+1. Choose a real bounded module and identify its nearest meaningful AGENTS boundary, owning current-state docs, source anchors, and direct boundary consumers before writing.
 2. Run twice on different modules or repositories without loading unrelated AI context.
-3. Fail if analysis silently expands to a full audit, copies schema/detail into multiple owners, misses a direct consumer, or rewrites sibling documentation without a confirmed dependency.
+3. Fail if analysis silently expands to a full audit, leaves the target under a generic ancestor that cannot route its role/risks/gates, copies schema/detail into multiple owners, misses a direct consumer, or rewrites sibling documentation without a confirmed dependency.
 
 ## Evidence and Scoring
 

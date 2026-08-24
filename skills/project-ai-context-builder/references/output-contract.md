@@ -65,7 +65,7 @@ Source anchors make targeted revalidation possible; do not use a last-reviewed d
 
 Root `AGENTS.md` contains project role, the reading router, repository-wide working rules, prohibitions, related context, and check-together routes. It does not duplicate architecture or stack detail.
 
-Folder `AGENTS.md` contains only local delta:
+Place folder guides with the semantic-boundary test in `scope-policy.md`. Folder `AGENTS.md` contains only the actionable local delta; a boundary-specific role, ownership, risk, prohibition, validation gate, or check-together route qualifies even when coding conventions match the parent:
 
 ```md
 # AGENTS.md
@@ -83,7 +83,7 @@ Folder `AGENTS.md` contains only local delta:
 - `<canonical context or adjacent path>`
 ```
 
-If no local delta exists, do not create the file.
+Omit empty headings. If an ancestor already names the boundary and supplies its actionable role, prohibitions, gates, and routes, do not create the file. Do not add guides to transparent directories solely to fill every physical level of the chain.
 
 ## 5. Portable Operation Contract
 

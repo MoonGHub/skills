@@ -11,7 +11,23 @@ Document a work area when at least one is true:
 - changing it can affect API/IPC, routing, auth, state, persistence, native behavior, design, build, deployment, or an external integration
 - it has non-obvious local rules that a parent document cannot express concisely
 
-Create folder `AGENTS.md` only when local instructions differ from the parent. Put app-wide entrypoints, shared utilities, generated boundaries, and high-risk integrations in current-state or module-detail docs instead of producing file-level guides.
+## Semantic AGENTS Depth
+
+For each included work area, identify the nearest meaningful boundary. Create a folder `AGENTS.md` when an ancestor cannot concisely make work at that boundary actionable through at least one of these deltas:
+
+- an independent project, app, package, crate, module, feature, or domain responsibility
+- a distinct build/runtime/test lifecycle or generated, native, security, auth, persistence, migration, or external-integration boundary
+- boundary-specific prohibitions, validation gates, change-impact checks, or paths that must be read or changed together
+
+A unique role, ownership boundary, risk, or check-together route counts as local delta; a folder does not need a different coding style to qualify. Keep architecture, current behavior, schemas, and app-wide file inventories in their canonical current-state or module-detail docs, and link them from AGENTS instead of copying them.
+
+Do not mirror the physical directory tree. Skip transparent grouping directories and ordinary leaves, and place the guide at the nearest boundary that changes how work is understood, routed, modified, or validated. An ancestor may cover a small child boundary only when it names that boundary and supplies an actionable route without broad repository rediscovery.
+
+The chain is deep enough when a task can follow root instructions through the nearest applicable semantic boundary to the owning current-state docs, adjacent contracts, and validation gate. Physical directories between those guides do not each need an `AGENTS.md`.
+
+- **Initialize**: inventory meaningful boundaries before writing and verify that each is covered by a nearest guide or an explicit actionable ancestor route.
+- **Refresh**: compare owners already named by START_HERE, structure docs, baseline rows, and changed topology with the existing chain. Inspect and repair only uncovered or affected boundaries unless repeated gaps trigger a full audit.
+- **Deepen**: evaluate the requested area's nearest meaningful boundary even when no source change exists, then add or update only the required local delta and routes.
 
 ## Exclusions
 
