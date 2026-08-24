@@ -83,7 +83,7 @@ Place folder guides with the semantic-boundary test in `scope-policy.md`. Folder
 - `<canonical context or adjacent path>`
 ```
 
-Omit empty headings. If an ancestor already names the boundary and supplies its actionable role, prohibitions, gates, and routes, do not create the file. Do not add guides to transparent directories solely to fill every physical level of the chain.
+Omit empty headings and keep the guide within the soft budget in `scope-policy.md` unless unique safety-critical or preserved manual instructions justify more. If an ancestor already names the boundary and supplies its actionable role, prohibitions, gates, and routes, do not create the file. Do not add guides to transparent directories solely to fill every physical level of the chain.
 
 ## 5. Portable Operation Contract
 

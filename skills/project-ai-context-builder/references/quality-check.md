@@ -11,7 +11,7 @@ Use this only before final reporting. Rate applicable items `상`, `중`, `하`,
 - **Useful coverage**: meaningful owners, entrypoints, flows, interfaces/data, commands, and high-risk boundaries are covered without file-level or absent-section noise.
 - **Contract ownership**: each confirmed cross-boundary dependency has at most one canonical map and no copied schema/detail.
 - **History quality**: current state was updated before the concise daily record; index, evidence, and multi-project ownership follow policy.
-- **Context efficiency**: rules and facts have one owner, folder AGENTS contain only actionable local delta, and semantic depth improves routing without mirroring the directory tree or adding navigation.
+- **Context efficiency**: rules and facts have one owner, folder AGENTS contain only actionable local delta and respect the soft budget or state a preservation reason, and semantic depth improves routing without mirroring the directory tree or adding navigation.
 - **Safety and change scope**: changed-doc sensitive-pattern matches were reviewed without reporting values; the agent-introduced delta contains no private values or unintended source/runtime/generated/vendor changes, and unrelated pre-existing worktree changes remain untouched.
 
 Report generated/updated/retired/preserved paths, remaining `확인 필요`, validation performed, and why application tests were skipped when documentation alone changed.

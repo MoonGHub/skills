@@ -17,7 +17,7 @@ Read this only when maintaining, releasing, or behaviorally evaluating this skil
 1. Use a source-complete isolated copy where generated AI context is absent from the evaluator's view; preserve ordinary project documentation as possible canonical input.
 2. Run at least twice. When fresh sessions or isolated agents are available, repeat one repository at the same revision without sharing the first output; otherwise use distinct real repositories or revisions and disclose that independent consistency was not tested.
 3. Compare semantic ownership, the meaningful-boundary inventory, root-to-nearest AGENTS coverage, source anchors, applicable documents, and `확인 필요`; byte-identical prose is not required.
-4. Fail if the run invents behavior, creates absent-topic placeholders, duplicates manual docs, mirrors the physical tree with folder guides, or leaves an independent owner/high-risk boundary behind a generic route that requires broad rediscovery.
+4. Fail if the run invents behavior, creates absent-topic placeholders, duplicates manual docs, mirrors the physical tree with folder guides, expands a new folder guide past its soft budget without unique justification, or leaves an independent owner/high-risk boundary behind a generic route that requires broad rediscovery.
 
 ### Refresh
 
@@ -30,7 +30,7 @@ Read this only when maintaining, releasing, or behaviorally evaluating this skil
 
 1. Choose a real bounded module and identify its nearest meaningful AGENTS boundary, owning current-state docs, source anchors, and direct boundary consumers before writing.
 2. Run twice on different modules or repositories without loading unrelated AI context.
-3. Fail if analysis silently expands to a full audit, leaves the target under a generic ancestor that cannot route its role/risks/gates, copies schema/detail into multiple owners, misses a direct consumer, or rewrites sibling documentation without a confirmed dependency.
+3. Fail if analysis silently expands to a full audit, leaves the target under a generic ancestor that cannot route its role/risks/gates, turns its folder guide into module-detail prose, copies schema/detail into multiple owners, misses a direct consumer, or rewrites sibling documentation without a confirmed dependency.
 
 ## Evidence and Scoring
 

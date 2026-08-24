@@ -49,6 +49,8 @@ Prefer the fewest documents that preserve distinct ownership and routing:
 
 These are soft limits. Safety-critical contracts win, but split unrelated owners or audiences rather than expanding a catch-all file.
 
+Treat a folder guide above its soft limit as a compaction review trigger, not deletion authority. For new or fully managed content, move architecture/current-state prose, examples, and repeated parent rules to their canonical owners and keep links plus actionable local delta. Preserve manual or unknown-ownership instructions under `output-contract.md`; if their unique content prevents safe compaction, retain it and report the reason.
+
 ## Deduplication and Splitting
 
 - Give each fact one canonical current-state owner and link to it elsewhere.
