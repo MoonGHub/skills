@@ -17,7 +17,7 @@ Append only what changes the default:
 
 ```text
 - 현재 문서가 오래되었을 수 있으니 source anchor와 변경 영역을 기준으로 증분 갱신해줘.
-- <module-or-folder>와 직접 연결된 계약만 더 깊게 분석해줘.
+- <module-or-folder> 안의 의미 있는 하위 경계를 제한적으로 식별하고, 직접 계약과 AGENTS coverage만 더 깊게 분석해줘.
 - 전체 감사가 필요하니 저장소 전체를 현재 코드 기준으로 다시 분석해줘.
 - 기존 수동 문서는 보존하고 스킬 관리 문서만 안전하게 갱신해줘.
 - 새 장비에서 시작할 수 있도록 bootstrap과 최소 검증 gate를 특히 확인해줘.

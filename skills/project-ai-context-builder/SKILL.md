@@ -40,7 +40,7 @@ When docs and implementation conflict, verify the relevant source anchors, corre
 
 - **Initialize**: meaningful AI context does not exist. Map the semantic work-area boundaries defined by `references/scope-policy.md` and create the smallest complete documentation system that reaches them.
 - **Refresh**: context exists. Verify topology, routing, source anchors, available changed paths, and AGENTS coverage for already routed owners first; update stale, affected, or structurally uncovered areas incrementally. Do not count an ancestor `AGENTS.md` as coverage unless it makes the routed meaningful boundary actionable. Deepen only each confirmed coverage gap's local delta and routes; do not broaden the run into project-wide Deepen.
-- **Deepen**: the user names a module or area. Analyze its nearest semantic boundary and direct contracts, then update only its routed documentation and applicable AGENTS chain.
+- **Deepen**: the user names a module or area. Within that requested area, inventory the target and its meaningful descendant boundaries, then analyze their direct contracts. For each included boundary, update only its routed documentation and ensure a nearest AGENTS local delta or an explicit actionable ancestor route; do not expand to unrelated siblings or outside the requested area.
 
 Perform a full audit only for Initialize, an explicit full-audit request, a major workspace/topology change, many missing source anchors, repeated AGENTS coverage gaps across independent owners, or documentation that is too unreliable to route work safely. Ask no setup questions for a minimal invocation unless the repository cannot be inspected or a user choice would materially change scope.
 
@@ -80,7 +80,7 @@ Evaluate specialist routing per independent project. In mixed repositories, use 
 1. Inspect read-only repository signals with fast search: manifests, source roots, entrypoints, routes or interfaces, state/data/persistence, configuration, build/test/run commands, tests, integrations, and existing docs. Respect exclusions.
 2. Detect documentation language, mode, project shape, project ownership boundaries, semantic AGENTS boundaries, and current documentation ownership. Prefer the user's language when signals conflict.
 3. Build a small source-anchor map for each affected work area. In Refresh, use the per-scope ledger from `00_REFRESH_BASELINE.md` only when its repository-relative owner paths still cover current topology and its exact VCS revisions resolve as ancestors of the current revision. Diff each trusted row through current `HEAD`, add pre-write dirty and untracked paths, and map changed producers to owning docs and direct consumers. A row proves only the committed range already verified; it never proves a claim by itself or covers a relevant working-tree overlay. For missing or untrusted rows, compare core claims with representative anchors for every routed owner and expand from any mismatch. Advance only verified rows after documentation review, as defined in `references/output-contract.md`.
-4. Read the conditional references above and plan the minimum files that give each fact one owner. For every meaningful boundary in scope, use `references/scope-policy.md` to choose a nearest folder AGENTS delta or an explicit actionable ancestor route. During Refresh, run the bounded AGENTS coverage pass defined there before finalizing this file plan.
+4. Read the conditional references above and plan the minimum files that give each fact one owner. For every meaningful boundary in scope, use `references/scope-policy.md` to choose a nearest folder AGENTS delta or an explicit actionable ancestor route. Before finalizing this file plan, run the mode-specific bounded AGENTS coverage pass defined there: routed candidates during Refresh, and target-plus-descendant candidates inside the requested area during Deepen.
 5. Create or update current-state docs before history. Make `00_START_HERE.md` a task router, make folder `AGENTS.md` local deltas, and keep source anchors near the contracts they support. Put the compressed update matrix from `references/output-contract.md` in exactly one project-local AI development rule, then route modification work to it from root AGENTS or START_HERE so continuity does not depend on this installed skill.
 6. Update operation guidance when bootstrap, toolchain, environment-key names, build/test/deploy commands, platform prerequisites, or minimum gates changed.
 7. Create or update one canonical contract map only for a confirmed cross-boundary dependency.
@@ -97,7 +97,7 @@ Create the minimum structure defined in `references/output-contract.md`:
 - root `AGENTS.md` and `AI_CONTEXT/00_START_HERE.md`
 - compact project identity, stack, structure, and portable operation knowledge, combining small documents when one owner and audience make that clearer
 - only applicable architecture/domain/feature/API/data/design/native/module-detail docs
-- folder `AGENTS.md` at the nearest meaningful module/ownership/risk boundary when an ancestor cannot provide its actionable local role, rules, prohibitions, and check-together route; skip transparent directories and ordinary leaves
+- folder `AGENTS.md` for each included meaningful module/ownership/risk boundary when an ancestor cannot provide its actionable local role, rules, prohibitions, and check-together route; skip transparent directories and ordinary leaves
 - optional contract maps and `00_HANDOFF.md` only when triggered
 - optional `00_REFRESH_BASELINE.md` as Refresh-only VCS provenance when repeated incremental maintenance benefits
 - small `99_CHANGELOG/AI_CHANGELOG.md` index and one `YYYY-MM/YYYY-MM-DD.md` file per day with meaningful completed changes
@@ -109,7 +109,7 @@ Do not create placeholder documents for absent concerns. Preserve an existing us
 Report concisely in the detected language:
 
 1. mode and analyzed scope
-2. created, updated, retired, and preserved manual docs
+2. created, updated, retired, and preserved manual docs; for Deepen, the bounded descendant coverage decisions and any intentional AGENTS omissions
 3. confirmed stack, ownership, flows, contracts, and portable commands
 4. inference and `확인 필요`
 5. quality and validation results, including skipped code tests because documentation alone changed

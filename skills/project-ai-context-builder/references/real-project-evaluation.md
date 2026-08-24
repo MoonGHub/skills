@@ -28,9 +28,9 @@ Read this only when maintaining, releasing, or behaviorally evaluating this skil
 
 ### Deepen
 
-1. Choose a real bounded module and identify its nearest meaningful AGENTS boundary, owning current-state docs, source anchors, and direct boundary consumers before writing.
-2. Run twice on different modules or repositories without loading unrelated AI context.
-3. Fail if analysis silently expands to a full audit, leaves the target under a generic ancestor that cannot route its role/risks/gates, turns its folder guide into module-detail prose, copies schema/detail into multiple owners, misses a direct consumer, or rewrites sibling documentation without a confirmed dependency.
+1. Across the trials, choose one real container-like area with multiple meaningful or transparent descendants and one bounded leaf module. Before writing, identify the requested-area boundary, in-scope descendant candidates, applicable AGENTS chain, owning current-state docs, source anchors, and direct consumers.
+2. Run twice on different modules or repositories without loading unrelated AI context. Confirm that each included descendant receives a nearest local delta or an explicit actionable ancestor route, and that transparent containers or ordinary leaves are skipped with a reason.
+3. Fail if analysis treats the target container as the only candidate despite distinct descendants, accepts generic ancestor-file presence as coverage, silently expands outside the requested area or into a full audit, leaves an included boundary without its role/risks/gates route, turns a folder guide into module-detail prose, copies schema/detail into multiple owners, misses a direct consumer, or rewrites an unrelated sibling.
 
 ## Evidence and Scoring
 
