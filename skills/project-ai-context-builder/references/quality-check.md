@@ -2,8 +2,8 @@
 
 Use this only before final reporting. Rate applicable items `상`, `중`, `하`, or `확인 필요` with one short reason; do not repeat the checklist itself in generated docs.
 
-- **Scope and mode**: Initialize/Refresh/Deepen matches the request; Refresh remained incremental unless a full-audit trigger existed.
-- **Routing and semantic depth**: START_HERE and the AGENTS chain reach or explicitly route every meaningful owner and high-risk boundary in scope without loading the whole knowledge base; transparent directories and ordinary leaves add no guide noise.
+- **Scope and mode**: Initialize/Refresh/Deepen matches the request; Refresh repaired confirmed meaningful-boundary coverage gaps only at those boundaries and remained incremental unless a full-audit trigger existed.
+- **Routing and semantic depth**: START_HERE task rows and the bounded coverage candidates reach or explicitly route every meaningful owner and high-risk boundary in scope to its local role, risks, adjacent contracts, and validation gate; ancestor-file presence alone was not accepted, while transparent directories and ordinary leaves add no guide noise.
 - **Source grounding**: current contracts have valid repository-relative anchors; facts, inference, and unknowns are separated.
 - **Refresh provenance**: each used baseline row has a resolvable ancestor revision and current owner boundary; committed, dirty, untracked, and topology changes were accounted for, and only verified rows advanced.
 - **Portable continuation**: operation docs support a clean machine; active unfinished work uses handoff and states commit/push limits.

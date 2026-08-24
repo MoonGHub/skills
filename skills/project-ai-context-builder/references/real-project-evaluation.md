@@ -23,8 +23,8 @@ Read this only when maintaining, releasing, or behaviorally evaluating this skil
 
 1. Start from real existing context and an earlier verified commit. Use at least one localized commit range and one contract, topology, or owner-boundary range.
 2. On each run, record the baseline revision, current revision, owner paths, committed diff paths, and pre-write dirty/untracked paths. Do not paste raw source or sensitive values into evaluation notes.
-3. Confirm that the run checks manifests/routes, compares already routed owners and changed topology with semantic AGENTS coverage, maps changed producers to direct consumers, updates only affected or uncovered owners, preserves unrelated/manual content, and advances only verified baseline rows.
-4. Include an unchanged-scope control. Fail if a clean worktree is treated as proof of freshness, a relevant overlay is covered by `HEAD`, a changed contract is missed, an already routed meaningful owner remains unreachable without broad rediscovery, or unrelated documentation is rewritten.
+3. Confirm that the run checks manifests/routes, compares already routed owners and changed topology with semantic AGENTS coverage, locally deepens only each confirmed uncovered boundary, maps changed producers to direct consumers, preserves unrelated/manual content, and advances only verified baseline rows.
+4. Include unchanged-scope and single-coverage-gap controls where an ancestor AGENTS exists but does not make one routed meaningful boundary actionable. Fail if ancestor-file presence is accepted as coverage, a clean worktree is treated as proof of freshness, a relevant overlay is covered by `HEAD`, a changed contract is missed, an already routed meaningful owner remains unreachable without broad rediscovery, one local gap expands into project-wide Deepen or unrelated sibling rewrites, or unrelated documentation is otherwise rewritten.
 
 ### Deepen
 

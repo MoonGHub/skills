@@ -9,6 +9,7 @@ $project-ai-context-builder 를 적용해줘.
 ```
 
 The skill infers language, mode, project shape, targeted reading, output, and validation.
+With existing context, this selects Refresh. A confirmed meaningful-boundary AGENTS coverage gap may be deepened locally during Refresh, but the run does not become project-wide Deepen without a named area or a full-audit trigger.
 
 ## Useful Options
 

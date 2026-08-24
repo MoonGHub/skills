@@ -26,7 +26,7 @@ Do not mirror the physical directory tree. Skip transparent grouping directories
 The chain is deep enough when a task can follow root instructions through the nearest applicable semantic boundary to the owning current-state docs, adjacent contracts, and validation gate. Physical directories between those guides do not each need an `AGENTS.md`.
 
 - **Initialize**: inventory meaningful boundaries before writing and verify that each is covered by a nearest guide or an explicit actionable ancestor route.
-- **Refresh**: compare owners already named by START_HERE, structure docs, baseline rows, and changed topology with the existing chain. Inspect and repair only uncovered or affected boundaries unless repeated gaps trigger a full audit.
+- **Refresh**: build a bounded coverage candidate set from START_HERE project owners and task-router rows, structure docs, trusted baseline owner paths, workspace members or manifests, and changed topology. For each candidate, test whether the existing AGENTS chain names or directly routes its local role, non-obvious rules or risks, adjacent contracts/check-together paths, and validation gate; the mere presence of an ancestor `AGENTS.md` is not coverage. Deepen only each confirmed gap's nearest AGENTS delta and routes, even when no source change exists. Leave unrelated siblings untouched and do not expand one gap into project-wide Deepen; repeated gaps across independent owners may trigger a full audit.
 - **Deepen**: evaluate the requested area's nearest meaningful boundary even when no source change exists, then add or update only the required local delta and routes.
 
 ## Exclusions
