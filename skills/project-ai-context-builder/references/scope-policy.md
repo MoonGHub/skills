@@ -13,7 +13,15 @@ Document a work area when at least one is true:
 
 ## Semantic AGENTS Depth
 
-For each included work area, identify the nearest meaningful boundary. Create a folder `AGENTS.md` when an ancestor cannot concisely make work at that boundary actionable through at least one of these deltas:
+Apply one recursive depth standard in Initialize, Refresh, and Deepen. Starting from each source root in the mode's scope, traverse candidate descendants until excluded output or ordinary leaves; do not stop at the repository top level, `src`, a language package root, or the first child layer while deeper candidate boundaries remain. Use the detected specialist reference for concrete backend, frontend, mobile, Rust, or fallback candidates.
+
+Mode changes breadth and reading cost, not the depth or placement test:
+
+- **Initialize**: recursively inventory every repository-owned source root and workspace member before writing.
+- **Refresh**: recursively inventory all repository-owned source roots at the structural level (paths, manifests, entrypoints, file ownership, and counts), then open source content and update docs only for routed, changed, stale, new, or uncovered boundaries. This coverage pass is not permission for an unrelated full content audit.
+- **Deepen**: recursively inventory the requested target and all candidate descendants, then inspect only their direct contracts and confirmed consumers. Never expand to unrelated siblings or outside the requested area.
+
+For each candidate, apply the Inclusion Test and identify the nearest meaningful boundary. A meaningful boundary has at least one of these deltas:
 
 - an independent project, app, package, crate, module, feature, or domain responsibility
 - a distinct build/runtime/test lifecycle or generated, native, security, auth, persistence, migration, or external-integration boundary
@@ -21,13 +29,21 @@ For each included work area, identify the nearest meaningful boundary. Create a 
 
 A unique role, ownership boundary, risk, or check-together route counts as local delta; a folder does not need a different coding style to qualify. Keep architecture, current behavior, schemas, and app-wide file inventories in their canonical current-state or module-detail docs, and link them from AGENTS instead of copying them.
 
-Do not mirror the physical directory tree. Skip transparent grouping directories and ordinary leaves, and place the guide at the nearest boundary that changes how work is understood, routed, modified, or validated. An ancestor may cover a small child boundary only when it names that boundary and supplies an actionable route without broad repository rediscovery.
+## File-Count Placement Rule
+
+Count **directly owned eligible files** after separating distinct descendant candidates. Eligible files are repository-owned source, configuration, interface, test, migration, or content files that implement or govern the boundary. Do not count skill-managed `AGENTS.md`/`AI_CONTEXT`, files owned by a child boundary, or generated, vendor, dependency, build, cache, coverage, and static binary output.
+
+Apply this deterministic placement rule to every included meaningful boundary:
+
+- **Three or more eligible files**: create or update that boundary's own `AGENTS.md`. A generic ancestor route is not a substitute.
+- **Zero, one, or two eligible files**: do not create a local `AGENTS.md`. Route the boundary only from the nearest meaningful ancestor guide, naming its path and role plus any local prohibition or risk, canonical context/check-together path, and validation gate.
+- Continue evaluating descendants even when the current folder has zero to two directly owned files or is a transparent `src`/grouping container.
+
+If a zero-to-two-file boundary already has a skill-managed local guide, preserve its unique rules in the nearest ancestor and retire it only under `output-contract.md`. Preserve manual or unknown-ownership guides; report that they remain instead of deleting them.
+
+Do not mirror the physical directory tree. Skip non-meaningful grouping directories and ordinary leaves. The zero-to-two-file exception is the only size-based ancestor substitution for an included boundary; simple ancestor-file presence never counts as coverage.
 
 The chain is deep enough when a task can follow root instructions through the nearest applicable semantic boundary to the owning current-state docs, adjacent contracts, and validation gate. Physical directories between those guides do not each need an `AGENTS.md`.
-
-- **Initialize**: inventory meaningful boundaries before writing and verify that each is covered by a nearest guide or an explicit actionable ancestor route.
-- **Refresh**: build a bounded coverage candidate set from START_HERE project owners and task-router rows, structure docs, trusted baseline owner paths, workspace members or manifests, and changed topology. For each candidate, test whether the existing AGENTS chain names or directly routes its local role, non-obvious rules or risks, adjacent contracts/check-together paths, and validation gate; the mere presence of an ancestor `AGENTS.md` is not coverage. Deepen only each confirmed gap's nearest AGENTS delta and routes, even when no source change exists. Leave unrelated siblings untouched and do not expand one gap into project-wide Deepen; repeated gaps across independent owners may trigger a full audit.
-- **Deepen**: stay inside the requested area and build a bounded candidate set from its entrypoints, manifests or workspace members, routes/interfaces, state/data/persistence, tests, direct contracts, and semantic source subtrees. Apply the Inclusion Test to the target and its meaningful descendants; do not treat the target container as the only candidate when distinct descendant responsibilities exist. For each included boundary, ensure a nearest AGENTS delta or an explicit actionable ancestor route even when no source change exists. Ancestor-file presence alone is not coverage. Skip a physical `src`/grouping directory when it is transparent, but continue through it to evaluate meaningful descendants; stop at ordinary leaves and never expand to unrelated siblings or outside the requested area.
 
 ## Exclusions
 

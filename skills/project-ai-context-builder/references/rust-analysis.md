@@ -56,7 +56,11 @@ Inspect Cargo aliases and repository wrappers such as `.cargo/config.toml`, `xta
 
 Distinguish a command found in files from a command executed successfully. For cross-compilation, record confirmed target triple, components, linker/native dependencies, container or `cross` usage, and produced artifact. Capture runtime arguments, environment key names, ports, migration/startup order, health checks, and shutdown behavior without values.
 
-## 7. Rust-Specific Output
+## 7. AGENTS Candidate Folders
+
+Recursively evaluate workspace and crate roots, `src` module trees, `bin`, handler/router/API, service/use-case, domain/model, repository/persistence/database, runtime/task/worker, error, migration, build/generation, unsafe/FFI/native-integration, examples, benches, and test boundaries when present. Do not stop at a crate root or `src` when distinct modules own separate responsibilities. Module names are discovery signals, not proof of an architecture; apply the Inclusion Test and file-count placement rule in `scope-policy.md`.
+
+## 8. Rust-Specific Output
 
 - Project structure: compact crate/role/kind/entrypoint/dependency table.
 - Architecture: request/command/job and async/task or public crate-boundary flow.

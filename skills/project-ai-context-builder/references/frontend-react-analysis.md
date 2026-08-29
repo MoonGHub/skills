@@ -29,6 +29,10 @@ Document existing component wrappers, design tokens, typography, layout/table/fo
 
 For content/static sites, capture page/section order, CTA/link ownership, SEO/metadata/OG, export/hosting constraints, and claims that need product confirmation. Do not duplicate copy or inventory ordinary components/assets.
 
+## AGENTS Candidate Folders
+
+Recursively evaluate app/project and source roots, `app`/`pages`/route/layout groups, feature domains, component modules and design-system roots, API/client/generated boundaries, hooks/context/store, forms/validation, `lib`/`utils`, styles/theme, middleware/auth/session, and test/e2e boundaries. Do not stop at `src`, `app`, `pages`, or `components` when distinct descendants exist. Names are discovery signals, not automatic inclusion; apply the Inclusion Test and file-count placement rule in `scope-policy.md`.
+
 ## Output Focus
 
 - `01_PROJECT`: framework/package manager, route roots, build/deploy mode.

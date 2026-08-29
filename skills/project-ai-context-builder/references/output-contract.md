@@ -65,7 +65,7 @@ Source anchors make targeted revalidation possible; do not use a last-reviewed d
 
 Root `AGENTS.md` contains project role, the reading router, repository-wide working rules, prohibitions, related context, and check-together routes. It does not duplicate architecture or stack detail.
 
-Place folder guides with the semantic-boundary test in `scope-policy.md`. Folder `AGENTS.md` contains only the actionable local delta; a boundary-specific role, ownership, risk, prohibition, validation gate, or check-together route qualifies even when coding conventions match the parent:
+Place folder guides with the recursive semantic-boundary and directly-owned eligible-file tests in `scope-policy.md`. Every included boundary with at least three eligible files receives its own folder `AGENTS.md`, containing only the actionable local delta:
 
 ```md
 # AGENTS.md
@@ -83,7 +83,11 @@ Place folder guides with the semantic-boundary test in `scope-policy.md`. Folder
 - `<canonical context or adjacent path>`
 ```
 
-Omit empty headings and keep the guide within the soft budget in `scope-policy.md` unless unique safety-critical or preserved manual instructions justify more. If an ancestor already names the boundary and supplies its actionable role, prohibitions, gates, and routes, do not create the file. Do not add guides to transparent directories solely to fill every physical level of the chain.
+Omit empty headings and keep the guide within the soft budget in `scope-policy.md` unless unique safety-critical or preserved manual instructions justify more. Do not add guides to transparent directories solely to fill every physical level of the chain.
+
+For an included boundary with zero, one, or two directly owned eligible files, create no local guide. Add one compact route to the nearest meaningful ancestor `AGENTS.md`; it must name the boundary path and role and provide any applicable local prohibition or risk, canonical context/check-together path, and validation gate. Do not copy architecture or current-state prose into that route. Continue evaluating meaningful descendants independently.
+
+When one ancestor routes several such small boundaries, prefer one compact table: `Boundary | Role / local risk | Read / check together | Gate`. Omit empty details and link to canonical current-state docs instead of expanding the table.
 
 ## 5. Portable Operation Contract
 
@@ -156,7 +160,7 @@ For new managed sections inside AGENTS or mixed documents, wrap only generated c
 | --- | --- |
 | Current behavior or contract | owning current-state doc, then daily record |
 | Cross-boundary contract | owning doc, one canonical contract map, then daily record |
-| Local working rule or ownership | nearest AGENTS delta; owning doc if current state changed; daily record |
+| Local working rule or ownership | local guide for an included three-or-more-file boundary, otherwise nearest-ancestor route for an included zero-to-two-file boundary; owning doc if current state changed; daily record |
 | Repository routing or topology | root AGENTS or START_HERE, structure/owner doc, then daily record |
 | Bootstrap/build/test/deploy contract | operation doc, then daily record |
 | Completed meaningful unit and its pass/fail/skip | daily record |

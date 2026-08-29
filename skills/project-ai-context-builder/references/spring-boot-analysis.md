@@ -32,6 +32,10 @@ Prioritize source anchors for security matcher/authority mapping, global excepti
 
 Create a contract map only for confirmed DTO/schema/template/client/config propagation. Keep full endpoint or schema detail in the owning API/database document.
 
+## AGENTS Candidate Folders
+
+Recursively evaluate project/module roots, `src/main/java` and package roots, then meaningful `controller`/DTO, `service`/facade, `repository`/persistence, `domain`/entity/VO/enum, `config`/security/advice, event/listener/scheduler, external-client, resources/migration, and test boundaries. Do not stop at the Java source or business-package root when these descendants exist. Names are discovery signals, not automatic inclusion; apply the Inclusion Test and file-count placement rule in `scope-policy.md`.
+
 ## Output Focus
 
 - `01_PROJECT`: Java/Spring/build versions, modules, entrypoints, commands.

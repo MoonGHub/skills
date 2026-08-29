@@ -24,6 +24,10 @@ Capture platform differences, source-of-truth files, and coordinated checks with
 
 Record shared UI/typography wrappers, tokens/theme or NativeWind conventions, safe-area and device-size behavior, accessibility, asset registration, media constraints, and platform-specific component behavior. Avoid ordinary screen/component inventories.
 
+## AGENTS Candidate Folders
+
+Recursively evaluate app/source roots, navigation, screen/feature domains, component modules, API/client/generated boundaries, contexts/hooks/store, forms/validation, theme/design-system, permissions/native modules, `android`, `ios`, and test boundaries. Do not stop at `src`, `screens`, `components`, or native platform roots when distinct descendants exist. Names are discovery signals, not automatic inclusion; apply the Inclusion Test and file-count placement rule in `scope-policy.md`.
+
 ## Output Focus
 
 - `01_PROJECT`: React Native/toolchain/package manager, app targets and commands.

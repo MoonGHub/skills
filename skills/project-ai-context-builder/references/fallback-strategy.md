@@ -14,4 +14,6 @@ Document only applicable areas:
 - auth/security/config handling and high-risk areas
 - tests, build, run, deploy, recovery, and known unknowns
 
-Create folder guides only for independently responsible work areas. Create a contract map only for a proven boundary. Do not invent framework conventions, product intent, runtime policy, or deployment behavior from names alone.
+Recursively evaluate project/source roots, entrypoint or route/command groups, feature/domain/module folders, interface/client/generated boundaries, state/data/persistence, config/security, integration, build/operation, and test folders. Do not stop at the source root or first child layer while distinct descendants remain. Names are discovery signals only; apply the Inclusion Test and file-count placement rule in `scope-policy.md`.
+
+Create folder guides only according to that shared placement rule. Create a contract map only for a proven boundary. Do not invent framework conventions, product intent, runtime policy, or deployment behavior from names alone.
