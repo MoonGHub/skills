@@ -31,7 +31,7 @@ A unique role, ownership boundary, risk, or check-together route counts as local
 
 ## File-Count Placement Rule
 
-Count **directly owned eligible files** after separating distinct descendant candidates. Eligible files are repository-owned source, configuration, interface, test, migration, or content files that implement or govern the boundary. Do not count skill-managed `AGENTS.md`/`AI_CONTEXT`, files owned by a child boundary, or generated, vendor, dependency, build, cache, coverage, and static binary output.
+Count **directly owned eligible files** after separating distinct descendant candidates. Eligible files are non-ignored, repository-owned source, configuration, interface, test, migration, or content files that implement or govern the boundary. Do not count skill-managed `AGENTS.md`/`AI_CONTEXT`, files owned by a child boundary, VCS-ignored paths, or generated, vendor, dependency, build, cache, coverage, and static binary output.
 
 Apply this deterministic placement rule to every included meaningful boundary:
 
@@ -50,6 +50,15 @@ The chain is deep enough when a task can follow root instructions through the ne
 Exclude dependencies, generated output, vendor code, caches, build artifacts, coverage, empty folders, ordinary leaf components, trivial helpers, static assets, and file-by-file generated-model inventories. Common examples include `node_modules`, `.next`, `dist`, `build`, `target`, `.gradle`, `coverage`, `Pods`, `.cxx`, and `vendor`.
 
 Document an excluded area only when its ownership or generation boundary affects source work. Record the source input, regeneration command when confirmed, consumers, and hand-edit restriction—not generated internals.
+
+### VCS-Ignored Paths
+
+Apply active VCS ignore rules before any recursive inventory, file count, content read, source-anchor selection, or change classification. In Git repositories, prefer `git ls-files --cached --others --exclude-standard` or an ignore-aware `rg --files`; this covers repository and nested `.gitignore`, `.git/info/exclude`, and configured global excludes. Do not use `git status --ignored`, `git ls-files --ignored`, `rg --no-ignore`, or an unfiltered recursive `find` for repository discovery.
+
+- Ignored paths never enter semantic candidates, eligible-file counts, source anchors, dirty/untracked Refresh inputs, contract maps, or evidence.
+- Do not open an ignored path merely because its name suggests source, configuration, credentials, or useful runtime state.
+- When ignored generated, dependency, cache, runtime, or local-configuration output affects source work, inspect only tracked manifests, generator inputs, example/schema files, and consuming source. Document the boundary and regeneration/ownership rule without reading the ignored contents.
+- For a non-Git repository, apply the equivalent ignore mechanism of its detected VCS. If no VCS exists, use the explicit exclusions above and project-local ignore files when supported by the discovery tool.
 
 ## Context Budget
 

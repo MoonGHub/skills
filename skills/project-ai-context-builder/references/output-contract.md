@@ -94,7 +94,7 @@ When one ancestor routes several such small boundaries, prefer one compact table
 Operation guidance is the new-machine source of truth for:
 
 - confirmed toolchain/runtime/package manager and clean-machine prerequisites
-- environment key names and where their values are obtained, never the values
+- environment key names and where their values are obtained, never the values; derive them from tracked examples, schemas, manifests, or consuming source rather than ignored local environment files
 - repository-relative bootstrap, run, build, test, generation, migration, and deploy commands
 - platform, target, external-service, and local-infrastructure prerequisites
 - minimum gates by change type and known `확인 필요`
@@ -136,8 +136,8 @@ Use one compact row per documentation owner, not per source file:
 - `Owner paths` define the repository-relative source boundary used for diff routing. Keep one coarse row per stable work-area owner, not per document or source file, and reuse anchors from the linked current-state docs instead of copying claims into this file.
 - `Verified revision` means the row's core claims, source anchors, routes, and direct contracts were checked against the committed tree at that exact revision. Dates, branch names, file existence, and document mtimes are not freshness evidence.
 - Trust a row only when its revision resolves and is an ancestor of current `HEAD`, its owner paths still match current topology, and no manifest/router change invalidates the boundary. Otherwise revalidate that scope from anchors before using it incrementally.
-- Refresh candidates are the union of `Verified revision..HEAD` within each owner boundary and linked current-state docs, the pre-write dirty and untracked paths, topology/manifests/routes, and direct producers or consumers of a changed contract. Classify dirty/untracked paths through exclusion and sensitive-data rules before opening them. Changed paths route inspection; they do not replace claim-to-anchor comparison.
-- Advance only rows whose linked docs and representative anchors were validated. Leave untouched rows at their prior revision. Relevant uncommitted or untracked changes are never covered by a committed revision; record their continuation state in handoff and re-evaluate after they become reproducible.
+- Refresh candidates are the union of `Verified revision..HEAD` within each owner boundary and linked current-state docs, the pre-write dirty and non-ignored untracked paths, topology/manifests/routes, and direct producers or consumers of a changed contract. Apply VCS ignores before classification; ignored paths are never candidates, owner paths, or source anchors. Classify remaining dirty/untracked paths through exclusion and sensitive-data rules before opening them. Changed paths route inspection; they do not replace claim-to-anchor comparison.
+- Advance only rows whose linked docs and representative anchors were validated. Leave untouched rows at their prior revision. Relevant non-ignored uncommitted or untracked changes are never covered by a committed revision; record their continuation state in handoff and re-evaluate after they become reproducible.
 - If the ledger is absent, incomplete, divergent, or untrusted, sample representative anchors for every routed owner and expand on mismatch. Use the full-audit triggers from `SKILL.md` rather than inventing a baseline.
 - Initialize may seed rows after final documentation validation; Deepen may advance only the verified target rows. Do not add absolute machine paths, remotes containing credentials, or raw diff/log content.
 

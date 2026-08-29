@@ -12,6 +12,7 @@ Use this only before final reporting. Rate applicable items `상`, `중`, `하`,
 - **Contract ownership**: each confirmed cross-boundary dependency has at most one canonical map and no copied schema/detail.
 - **History quality**: current state was updated before the concise daily record; index, evidence, and multi-project ownership follow policy.
 - **Context efficiency**: rules and facts have one owner, local guides contain only actionable delta, zero-to-two-file boundaries use compact ancestor routes, and recursive coverage does not mirror non-meaningful physical directories.
+- **Ignore discipline**: active VCS ignores were applied before discovery; ignored paths were not traversed, counted, opened, used as anchors, or classified as dirty/untracked input, and any relevant ignored-output boundary was derived only from tracked inputs and consumers.
 - **Safety and change scope**: changed-doc sensitive-pattern matches were reviewed without reporting values; the agent-introduced delta contains no private values or unintended source/runtime/generated/vendor changes, and unrelated pre-existing worktree changes remain untouched.
 
 Report generated/updated/retired/preserved paths, remaining `확인 필요`, validation performed, and why application tests were skipped when documentation alone changed. Summarize included boundaries, directly owned eligible-file counts, and each local-guide or ancestor-route decision.
