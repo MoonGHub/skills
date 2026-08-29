@@ -9,7 +9,12 @@ $project-ai-context-builder 를 적용해줘.
 ```
 
 The skill infers language, mode, project shape, targeted reading, output, and validation.
-With existing context, this selects Refresh. Refresh recursively inventories owned source-root structure to semantic leaf depth, but deep-reads and rewrites only stale, affected, new, or uncovered boundaries; it does not become a full content audit without a trigger.
+
+- Without meaningful AI context, this selects Initialize.
+- With existing context, this selects Refresh and starts from routed documentation, provenance, changed paths, and source anchors.
+- Full Reapply is selected only when explicitly requested or existing routing is too unreliable to scope safely.
+
+Refresh automatically evaluates added, moved, deeper, or growing folders and creates qualifying folder AGENTS coverage. Routine structural growth after Initialize does not require Full Reapply.
 
 ## Useful Options
 
@@ -17,8 +22,8 @@ Append only what changes the default:
 
 ```text
 - 현재 문서가 오래되었을 수 있으니 source anchor와 변경 영역을 기준으로 증분 갱신해줘.
-- <module-or-folder> 안의 의미 있는 하위 경계를 끝까지 재귀적으로 식별하고, 직접 계약과 AGENTS coverage만 더 깊게 분석해줘.
-- 전체 감사가 필요하니 저장소 전체를 현재 코드 기준으로 다시 분석해줘.
+- <module-or-folder>를 변경 범위 힌트로 사용하되, 새 하위 경계와 직접 consumer까지 Refresh해줘.
+- 전체 다시 적용 모드로 모든 owned source root와 기존 AI_CONTEXT/AGENTS coverage를 현재 규칙 기준으로 재검증해줘.
 - 기존 수동 문서는 보존하고 스킬 관리 문서만 안전하게 갱신해줘.
 - 새 장비에서 시작할 수 있도록 bootstrap과 최소 검증 gate를 특히 확인해줘.
 ```

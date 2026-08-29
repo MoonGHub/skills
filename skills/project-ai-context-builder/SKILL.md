@@ -1,6 +1,6 @@
 ---
 name: project-ai-context-builder
-description: "Analyze an existing or newly initialized software repository and create, refresh, or deepen portable AI-led development documentation: root and folder AGENTS.md, an adaptive AI_CONTEXT knowledge base, contract maps, handoff state, and concise changelogs. Use when the user invokes @project-ai-context-builder or $project-ai-context-builder, after /init, while onboarding Codex, when project context is stale, or when a new session or machine must continue work without re-analyzing the whole repository. Supports Java/Spring Boot, React/Vite/Next.js, React Native, Rust/Cargo workspaces, applications and libraries, content/static sites, mixed repositories, and unfamiliar stacks through a fact-based fallback."
+description: "Create or maintain portable project-local AI development context: root and folder AGENTS.md, routed AI_CONTEXT current-state and operation docs, contract maps, handoff state, and concise history. Use when the user invokes @project-ai-context-builder or $project-ai-context-builder, or asks to initialize, incrementally refresh, or fully reapply AI development documentation for repository onboarding or cross-session/new-machine continuation. Do not activate for ordinary code changes, generic repository explanations, or general documentation edits that do not request portable AI development context. Supports common and mixed stacks, including Rust, through fact-based specialist routing and fallback."
 ---
 
 # Project AI Context Builder
@@ -9,7 +9,7 @@ description: "Analyze an existing or newly initialized software repository and c
 
 Build portable project memory that lets a new AI session or machine orient, select only task-relevant context, and continue safely without a default full-repository analysis. Produce documentation only unless the user explicitly requests application changes.
 
-## Canonical Information Roles
+## Information Roles
 
 Keep each fact in one authoritative place and link to it elsewhere:
 
@@ -39,26 +39,27 @@ When docs and implementation conflict, verify the relevant source anchors, corre
 
 ## Select the Mode
 
-- **Initialize**: meaningful AI context does not exist. Recursively inventory all repository-owned source roots and create the smallest complete documentation system that reaches every meaningful work-area boundary.
-- **Refresh**: context exists. Recursively inventory the structure of all repository-owned source roots, then deep-read and update only stale, affected, newly discovered, or structurally uncovered areas. Do not count an ancestor `AGENTS.md` as coverage unless it satisfies the placement rule in `references/scope-policy.md`.
-- **Deepen**: the user names a module or area. Recursively inventory that target and all meaningful descendants, analyze their direct contracts, and update only that area and confirmed direct consumers; do not expand to unrelated siblings or outside the requested area.
+- **Initialize**: meaningful AI context does not exist. Inventory every repository-owned source root and semantic descendant, then create the smallest complete routed documentation system under the current policies.
+- **Refresh**: context exists. Start with `references/refresh-policy.md`, use trusted provenance and changed structure to read only affected documentation and source, and automatically extend AGENTS coverage for new, moved, or growing boundaries. A user-named module is a Refresh routing hint, not another mode.
+- **Full Reapply** (`전체 다시 적용`): the user explicitly requests repository-wide reapplication, or existing routing is too unreliable to scope safely. Re-inventory all owned source roots, re-evaluate all managed coverage under current policies, and preserve useful manual and existing modular documents.
 
-Apply the same recursive folder-depth and AGENTS placement standard in every mode. Never stop at the repository top level, a source root, or its first child while deeper candidate boundaries remain. Mode changes the authorized breadth and how much content is opened, not the depth test: Refresh may use a cheap structural inventory before selectively reading files, while Deepen remains bounded to the requested area.
+Initialize and Full Reapply use complete recursive semantic coverage. Refresh applies the same depth and placement rules inside every routed structural candidate, but does not scan or read unrelated owners when trusted provenance can exclude them. New depth or file growth after Initialize is handled by Refresh and is not by itself a Full Reapply trigger.
 
-Perform a full audit only for Initialize, an explicit full-audit request, a major workspace/topology change, many missing source anchors, repeated AGENTS coverage gaps across independent owners, or documentation that is too unreliable to route work safely. Ask no setup questions for a minimal invocation unless the repository cannot be inspected or a user choice would materially change scope.
+For a minimal invocation, choose Initialize when meaningful context is absent and Refresh otherwise. Choose Full Reapply only for the conditions above. Ask no setup question unless the repository cannot be inspected or a user choice would materially change scope.
 
 ## Progressive Reading
 
-1. Orient with the root `AGENTS.md`, existing `AI_CONTEXT/00_START_HERE.md`, a shallow tree, and manifests. Do not load all `AI_CONTEXT` or all changelogs. During Refresh only, also load the optional `AI_CONTEXT/00_REFRESH_BASELINE.md`; keep it out of ordinary task context.
+1. Orient with the root `AGENTS.md`, existing `AI_CONTEXT/00_START_HERE.md`, a shallow tree, and manifests. Do not load all `AI_CONTEXT` or all changelogs. In Refresh, next read `references/refresh-policy.md` and the optional `AI_CONTEXT/00_REFRESH_BASELINE.md`; keep the baseline out of ordinary task context.
 2. For an existing project, read the applicable `AGENTS.md` chain from root through intermediate folders to the closest `AGENTS.md`; nearer instructions specialize scope but cannot weaken root non-negotiable or explicit user rules.
 3. Read only current-state docs routed by `00_START_HERE.md`, the applicable AGENTS chain, or discovered direct dependencies.
 4. Load references conditionally:
 
 | Condition | Read |
 | --- | --- |
-| Any documentation creation, update, merge, or retirement | `references/output-contract.md` |
-| Initialize or structural output redesign | `references/scope-policy.md` |
-| Coverage/splitting decision during Refresh or Deepen | `references/scope-policy.md` |
+| Initialize or Full Reapply | `references/output-contract.md`, `references/scope-policy.md` |
+| Refresh routing and provenance | `references/refresh-policy.md` first; load other references only as it directs |
+| Documentation creation, update, merge, or retirement | `references/output-contract.md` |
+| Coverage, placement, splitting, or safe discovery decision | `references/scope-policy.md` |
 | Cross-boundary dependency confirmed | `references/contract-map-policy.md` |
 | Changelog creation, update, or migration | `references/changelog-policy.md` |
 | Multiple app/service/package/crate candidates are detected | `references/multi-project-patterns.md` |
@@ -80,18 +81,14 @@ Evaluate specialist routing per independent project. In mixed repositories, use 
 
 ## Workflow
 
-1. Inspect read-only repository signals with VCS-ignore-aware fast search: manifests, source roots, entrypoints, routes or interfaces, state/data/persistence, configuration, build/test/run commands, tests, integrations, and existing docs. Recursively enumerate non-ignored candidate folders to semantic leaf depth while respecting exclusions; do not infer coverage from a shallow tree alone.
-2. Detect documentation language, mode, project shape, project ownership boundaries, semantic AGENTS boundaries, each candidate's directly owned eligible-file count, and current documentation ownership. Prefer the user's language when signals conflict.
-3. Build a small source-anchor map for each affected work area. In Refresh, use the per-scope ledger from `00_REFRESH_BASELINE.md` only when its repository-relative owner paths still cover current topology and its exact VCS revisions resolve as ancestors of the current revision. Diff each trusted row through current `HEAD`, add pre-write dirty and non-ignored untracked paths, and map changed producers to owning docs and direct consumers. A row proves only the committed range already verified; it never proves a claim by itself or covers a relevant working-tree overlay. For missing or untrusted rows, compare core claims with representative anchors for every routed owner and expand from any mismatch. Advance only verified rows after documentation review, as defined in `references/output-contract.md`.
-4. Read the conditional references above and plan the minimum files that give each fact one owner. Apply the recursive candidate and deterministic AGENTS placement rules in `references/scope-policy.md`: Initialize covers all owned source roots, Refresh structurally covers all owned source roots before selectively deep-reading gaps, and Deepen covers the target plus descendants. Before finalizing the file plan, verify every included boundary rather than sampling only the container or first level.
-5. Create or update current-state docs before history. Make `00_START_HERE.md` a task router, make folder `AGENTS.md` local deltas, and keep source anchors near the contracts they support. Put the compressed update matrix from `references/output-contract.md` in exactly one project-local AI development rule, then route modification work to it from root AGENTS or START_HERE so continuity does not depend on this installed skill.
-6. Update operation guidance when bootstrap, toolchain, environment-key names, build/test/deploy commands, platform prerequisites, or minimum gates changed.
-7. Create or update one canonical contract map only for a confirmed cross-boundary dependency.
-8. If unfinished work must survive a session, write the optional handoff. Do not put unfinished work in the completed-change log.
-9. Preserve manual/mixed docs and retire only verified obsolete skill-managed docs according to `references/output-contract.md`.
-10. Update the current daily changelog after the owning current-state docs. Use same-month evidence only when durable detail is necessary.
-11. Review routed links, source anchors, semantic AGENTS depth, ownership, portability, concise size, and documentation-only scope with `references/quality-check.md`. Search changed Markdown for generic and project-specific sensitive-value patterns, inspect matches without echoing values in the report, and separate pre-existing worktree changes from the agent delta.
-12. Re-read the generated root router, START_HERE, affected AGENTS chain, representative meaningful-boundary paths, and changed docs; fix routing gaps before reporting.
+1. Snapshot version-control status, then inspect VCS-ignore-aware repository signals. Initialize and Full Reapply recursively enumerate every owned source root to semantic leaf depth. Refresh follows `REFRESH-01` through `REFRESH-04` and enumerates only routed structural candidates unless expansion is required.
+2. Detect language, project owners, stack, documentation ownership, semantic boundaries, and source anchors. Apply `SCOPE-01`, `PLACE-01`, and `DISCOVERY-01`; do not infer coverage from an ancestor guide or shallow tree.
+3. In Refresh, treat added or deeper folders, renamed paths, and eligible-file-count changes as placement candidates. Evaluate their nearest owning ancestor and descendants so qualifying folder `AGENTS.md` files appear automatically without Full Reapply.
+4. Load only the conditional references required by the selected mode and discovered candidates. Give every fact one canonical owner and preserve useful routed files even when the documentation set is large.
+5. Update current-state docs before history. Keep START_HERE a task router, folder AGENTS local deltas, operations portable, and contract maps limited to confirmed cross-boundary dependencies.
+6. Preserve manual/mixed content and retire only verified obsolete managed documentation under `OWNERSHIP-01`. Put unfinished continuation state in handoff; record meaningful completed changes in the current daily file.
+7. In Git repositories, seed or advance only verified Refresh-baseline owner rows under `REFRESH-04`.
+8. Run `quality-check.md`, inspect changed Markdown for sensitive-value patterns without reporting values, and re-read the resulting root router, START_HERE, affected AGENTS chains, and changed docs before reporting.
 
 ## Output Baseline
 
@@ -100,9 +97,9 @@ Create the minimum structure defined in `references/output-contract.md`:
 - root `AGENTS.md` and `AI_CONTEXT/00_START_HERE.md`
 - compact project identity, stack, structure, and portable operation knowledge, combining small documents when one owner and audience make that clearer
 - only applicable architecture/domain/feature/API/data/design/native/module-detail docs
-- folder `AGENTS.md` for every included meaningful boundary that directly owns at least three eligible files; for an included boundary with zero, one, or two such files, create no local guide and place its actionable role, rules or risks, check-together paths, and validation gate in the nearest meaningful ancestor `AGENTS.md`
+- folder `AGENTS.md` and compact ancestor routes according to `PLACE-01`, including its narrow high-risk exception
 - optional contract maps and `00_HANDOFF.md` only when triggered
-- optional `00_REFRESH_BASELINE.md` as Refresh-only VCS provenance when repeated incremental maintenance benefits
+- Git projects intended for continued maintenance: `00_REFRESH_BASELINE.md` seeded under `REFRESH-02`; omit it only for non-Git or explicitly one-off documentation
 - small `99_CHANGELOG/AI_CHANGELOG.md` index and one `YYYY-MM/YYYY-MM-DD.md` file per day with meaningful completed changes
 
 Do not create placeholder documents for absent concerns. Preserve an existing useful numbering scheme; otherwise choose sections from the specialist reference.

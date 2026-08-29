@@ -1,4 +1,4 @@
 interface:
   display_name: "Project AI Context Builder"
   short_description: "Build portable AI_CONTEXT and AGENTS guides"
-  default_prompt: "Use $project-ai-context-builder to create or refresh portable, source-grounded AI_CONTEXT and AGENTS.md so a new session or machine can continue with targeted reading instead of a full repository re-analysis."
+  default_prompt: "Use $project-ai-context-builder to initialize, incrementally refresh, or fully reapply portable, source-grounded AI_CONTEXT and AGENTS.md for targeted continuation across sessions and machines."

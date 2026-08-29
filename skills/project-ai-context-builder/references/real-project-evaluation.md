@@ -5,12 +5,25 @@ Read this only when maintaining, releasing, or behaviorally evaluating this skil
 ## Corpus and Isolation
 
 - For a core workflow change, use at least three real repositories covering a single-project shape, a multi-project or mixed shape, and Rust or an unmatched stack. Include both existing AI context and a repository evaluated as Initialize.
-- Run every affected mode at least twice across distinct repositories or revisions. For a change shared by all modes, run Initialize, Refresh, and Deepen at least twice each.
-- Across the corpus, include meaningful candidate boundaries with zero, one, two, and at least three directly owned eligible files, plus a transparent container with deeper meaningful descendants.
+- Run every affected mode at least twice across distinct repositories or revisions. For a change shared by all modes, run Initialize, Refresh, and Full Reapply at least twice each.
+- Across the corpus, include meaningful candidate boundaries with zero, one, two, and at least three directly owned eligible files, a valid narrow `PLACE-01` exception, and a transparent container with deeper meaningful descendants.
 - Include repositories with ordinary ignored dependency/build output and ignored local-configuration paths; evaluate from tracked inputs without opening or copying ignored contents.
 - Prefer fresh sessions or isolated agents when available. Give only the skill, task, repository, and requested scope; do not reveal expected output, prior diagnoses, or another run's artifacts.
 - Work from disposable copies or isolated worktrees. Never remove live documentation, rewrite user branches, expose secrets, or run production/deployment actions for evaluation.
 - Use a repository's real source and commit history. Toy fixtures and invented file trees may supplement edge cases but cannot satisfy the release gate.
+
+## Activation and Mode Selection
+
+Test activation separately from output behavior with direct, indirect, incomplete, non-trigger, and safety-edge requests. Include Korean and English phrasing where the skill is expected to support both.
+
+- explicit `$project-ai-context-builder` with no meaningful context → Initialize
+- explicit or indirect portable-context maintenance request with existing context → Refresh
+- named module or folder with existing context → Refresh with a routing hint, never a separate mode
+- explicit `전체 다시 적용`, full reapplication, or equivalent → Full Reapply
+- ordinary code changes, generic repository explanations, and general documentation edits without portable AI-context intent → no implicit activation
+- uninspectable repository or a missing choice that materially changes scope → one focused question rather than fabricated assumptions
+
+Fail activation when the skill over-triggers on ordinary work, misses a recognizable portable-context goal, selects Full Reapply for routine growth, or emits a removed mode.
 
 ## Mode Trials
 
@@ -19,20 +32,22 @@ Read this only when maintaining, releasing, or behaviorally evaluating this skil
 1. Use a source-complete isolated copy where generated AI context is absent from the evaluator's view; preserve ordinary project documentation as possible canonical input.
 2. Run at least twice. When fresh sessions or isolated agents are available, repeat one repository at the same revision without sharing the first output; otherwise use distinct real repositories or revisions and disclose that independent consistency was not tested.
 3. Compare semantic ownership, the recursively discovered meaningful-boundary inventory, directly owned eligible-file counts, root-to-nearest AGENTS coverage, source anchors, applicable documents, and `확인 필요`; byte-identical prose is not required.
-4. Fail if the run stops at top or first-child depth, invents behavior, creates absent-topic placeholders, duplicates manual docs, mirrors non-meaningful physical directories, creates a local guide for a zero-to-two-file boundary, omits a local guide for an included three-or-more-file boundary, or expands a new guide past its soft budget without unique justification.
+4. Fail if the run stops at top or first-child depth, invents behavior, creates absent-topic placeholders, duplicates manual docs, mirrors non-meaningful physical directories, violates `PLACE-01`, omits a qualifying boundary, or expands a new guide past `SIZE-01` without unique justification.
 
 ### Refresh
 
-1. Start from real existing context and an earlier verified commit. Use at least one localized commit range and one contract, topology, or owner-boundary range.
-2. On each run, record the baseline revision, current revision, owner paths, committed diff paths, and pre-write dirty/non-ignored-untracked paths. Do not paste raw source or sensitive values into evaluation notes.
-3. Confirm that the run recursively inventories all owned source-root structures, checks manifests/routes, compares meaningful candidates with AGENTS coverage and the file-count placement rule, deep-reads only relevant stale/affected/gap scopes, maps changed producers to direct consumers, preserves unrelated/manual content, and advances only verified baseline rows.
-4. Include unchanged-scope and placement-gap controls. Fail if the run stops structurally at top or first-child depth, turns structural inventory into an unrelated full content audit, accepts ancestor presence for a three-or-more-file boundary, creates a local guide for a zero-to-two-file boundary, treats a clean worktree as proof of freshness, misses a changed contract, or rewrites unrelated documentation.
+1. Start from real existing context and an earlier verified commit. Include trusted and untrusted baseline cases, a localized contract change, and a structural change.
+2. Record the baseline/current revisions, owner paths, committed diff paths, pre-write dirty/non-ignored-untracked paths, references loaded, source areas opened, and any rejected row without copying raw source or sensitive values.
+3. Confirm `REFRESH-01` through `REFRESH-04`: unaffected trusted owners remain unread, routed claims are anchor-checked, direct consumers are covered, and only verified owner rows advance.
+4. Include controls for an unchanged owner, a new nested folder, an existing boundary growing from two to three eligible files, a valid small high-risk boundary, and a move/delete or manifest change. Confirm that Refresh recursively evaluates the affected ancestor and descendants and creates or reroutes AGENTS coverage without Full Reapply.
+5. Fail if Refresh performs an unrelated whole-repository read, treats clean status as freshness, misses a changed contract/direct consumer/new semantic boundary, fails a `PLACE-01` transition, loads all AI_CONTEXT/history by default, rewrites unrelated documentation, or advances false provenance.
 
-### Deepen
+### Full Reapply
 
-1. Across the trials, choose one real container-like area with multiple meaningful or transparent descendants and one bounded leaf module. Before writing, identify all in-scope descendant candidates, their directly owned eligible-file counts, the applicable AGENTS chain, owning current-state docs, source anchors, and direct consumers.
-2. Run twice on different modules or repositories without loading unrelated AI context. Confirm recursive traversal through transparent containers, local guides for included three-or-more-file boundaries, and compact nearest-ancestor routes for included zero-to-two-file boundaries.
-3. Fail if analysis treats the target container as the only candidate, stops at first-child depth, accepts an ancestor route for a three-or-more-file boundary, creates a local guide for a zero-to-two-file boundary, silently expands outside the requested area, turns a folder guide into module-detail prose, misses a direct consumer, or rewrites an unrelated sibling.
+1. Use existing, nontrivial AI context and explicitly request Full Reapply. Inventory every owned source root and project owner under the current policies.
+2. Confirm that useful modular files, manual/mixed instructions, unique decisions, and current routing are preserved while stale managed coverage and contracts are corrected.
+3. Include a repository with many valid routed documents and verify that the run does not collapse them merely to reduce file count.
+4. Fail if the run behaves like a localized Refresh, stops at shallow depth, deletes or overwrites manual content, preserves demonstrably stale managed claims, mirrors ordinary directories, or merges distinct owners without a routing benefit.
 
 ## Evidence and Scoring
 
@@ -40,8 +55,10 @@ Keep raw artifacts outside the installed skill and its release tree. For each ru
 
 - task prompt, repository identity without credentials, exact revision, initial status, mode, and requested scope
 - files read and changed, source anchors supporting key claims, baseline rows used or rejected, and concise diff summary
-- quality ratings from `quality-check.md`, failures, corrective change, and rerun result
+- quality ratings from `quality-check.md`, activation/mode result, failures, corrective change, and rerun result
 
-Score these gates `pass`, `fail`, or `not applicable`: mode/scope, factual grounding, routing/context economy, boundary coverage, ignore discipline, manual and dirty-worktree preservation, portable continuation, history ownership, and Refresh provenance. A run fails overall on any fabricated fact, missed changed contract or direct consumer, traversal/counting/opening of a VCS-ignored path, unauthorized manual-content loss, sensitive-value disclosure, unjustified full scan, or false baseline advancement.
+Keep one concise versioned evaluation summary outside the installed skill, such as the source repository's `evaluations/project-ai-context-builder/<date-or-version>.md`. Record corpus/revisions, activation cases, mode counts, observable reading scope, failures, and rerun outcomes; do not retain source dumps or private values.
+
+Score these gates `pass`, `fail`, or `not applicable`: activation/mode, factual grounding, Refresh reading economy, routing, boundary coverage, discovery discipline, manual and dirty-worktree preservation, portable continuation, history ownership, and Refresh provenance. A run fails overall on any fabricated fact, missed changed contract/direct consumer/new structural boundary, ignored or external-symlink traversal, unauthorized manual-content loss, sensitive-value disclosure, unjustified full scan, false Full Reapply selection, or false baseline advancement.
 
 When two runs expose the same failure class, treat it as a skill-policy defect, revise the owning rule once, and rerun the affected mode on both a previously failing case and a different repository. Report the corpus, revisions, run counts, failures, and rerun outcomes concisely; do not claim independent-session validation when it was not performed.

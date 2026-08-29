@@ -20,4 +20,4 @@ Place a cross-project contract map at the lowest common owner. Record only the e
 
 Record a service-internal change only in that service's daily file. For a true cross-project change, the root daily entry summarizes the repository-level contract and links child records without duplicating their details.
 
-On Refresh, use changed paths only as routing hints and compare routed claims against representative source anchors in affected projects. Expand to the whole workspace only when shared topology/common contracts changed, sampled claims mismatch broadly, or routing is unreliable.
+On Refresh, apply `REFRESH-01` through `REFRESH-04` per independent owner. Expand to the whole workspace only when the Full Reapply mode conditions in `SKILL.md` are met; a localized project or folder growth does not justify reading unrelated projects.
